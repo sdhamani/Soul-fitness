@@ -1,0 +1,139 @@
+@import "https://serene-ui.netlify.app//styles.css";
+
+:root {
+  --primary-color: #2a2c2e;
+  --secondary-color: #00cacd;
+  --button-text-color: white;
+}
+
+/* Card components */
+.card-ecom {
+  justify-content: center;
+}
+
+.card-content-ecom {
+  text-align: center;
+}
+
+/* Navigation */
+
+.nav-ecom {
+  border-radius: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .nav-ecom {
+    width: 100%;
+  }
+
+  .nav-ecom .list-no-bullets {
+    margin-right: 4rem;
+  }
+}
+
+/* landing-page */
+
+.landing-page {
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+}
+.text-overlay-data-ecom {
+  width: 38%;
+  height: 30%;
+  color: white;
+  position: absolute;
+  top: 35%;
+  left: 60%;
+  background-color: black;
+  display: flex;
+  justify-items: flex-end;
+  flex-direction: column;
+}
+
+.text-overlay-h1 {
+  font-size: 2rem;
+  transform: rotate(0deg) scale(1);
+  text-align: right;
+  margin: 0.2rem 1.6rem;
+}
+
+.text-overlay-h2 {
+  font-size: 6rem;
+  transform: rotate(0deg) scale(1);
+}
+
+.text-overlay-btn {
+  width: 6rem;
+  padding: 0.5rem;
+  margin: 1rem 24rem;
+}
+
+@media screen and (max-width: 767px) {
+  .text-overlay-data-ecom {
+    width: 28%;
+    height: 8%;
+    top: 13%;
+    left: 52%;
+    background-color: black;
+  }
+
+  .text-overlay-h1 {
+    font-size: 0.2rem;
+    transform: rotate(0deg) scale(1);
+    text-align: right;
+    margin: 0.2rem 0.1rem;
+  }
+
+  .text-overlay-h2 {
+    font-size: 1.5rem;
+    transform: rotate(0deg) scale(1);
+  }
+
+  .text-overlay-btn {
+    width: 4rem;
+    font-size: x-small;
+    padding: 0.1rem;
+    margin: 1rem 3.3rem;
+  }
+}
+
+/* landing-page-grid-images */
+
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.responsive-img-ecom {
+  margin: 1rem 0.4rem;
+}
+
+@media screen and (max-width: 767px) {
+  .image-grid {
+    display: block;
+    align-items: center;
+    justify-content: center;
+  }
+  .responsive-img-ecom {
+    margin: 1rem;
+    margin-left: 2rem;
+    width: 85%;
+  }
+}
+
+/* bestproducts */
+.landing-best-products {
+  margin: auto;
+  text-align: center;
+}
+
+.landing-best-products-h1 {
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.landing-best-products-h2 {
+  font-size: 2rem;
+  margin: 0.1rem;
+}
