@@ -6,7 +6,7 @@ const products = [
     name: "Sneaker",
     image:
       "https://cdn.shopify.com/s/files/1/0264/4469/3589/products/sp1.jpg?v=1586338120",
-    price: "$432.00",
+    price: "432.00",
     inStock: "Instock",
     delivery: "Prime",
     ratings: "🌟 🌟 🌟 🌟",
@@ -20,7 +20,7 @@ const products = [
     name: "Enamel Coated Cast Iron Kettlebell",
     image:
       "https://cdn.shopify.com/s/files/1/0264/4469/3589/products/2.jpg?v=1586854907",
-    price: "$120.00",
+    price: "120.00",
     inStock: "Instock",
     delivery: "3 Days",
     ratings: "🌟 🌟 🌟 🌟 🌟",
@@ -34,9 +34,9 @@ const products = [
     name: "Vesey Leggings V2",
     image:
       "https://cdn.shopify.com/s/files/1/0264/4469/3589/products/pro48.jpg?v=1586317317",
-    price: "$302.00",
+    price: "302.00",
     inStock: "Out of Stock",
-    delivery: "Normal",
+    delivery: "Prime",
     ratings: "🌟 🌟 🌟 🌟 🌟",
     offer: "Save 50",
     idealFor: "Women",
@@ -48,7 +48,7 @@ const products = [
     name: "Tribeca Sweatpants",
     image:
       "https://cdn.shopify.com/s/files/1/0264/4469/3589/products/pro48.jpg?v=1586317317",
-    price: "$96.00",
+    price: "96.00",
     inStock: "Instock",
     delivery: "Normal",
     ratings: "🌟 🌟 🌟 🌟 🌟",
@@ -62,7 +62,7 @@ const products = [
     name: "Treadmill Running Machine",
     image:
       "https://cdn.shopify.com/s/files/1/0264/4469/3589/products/pro8.jpg?v=1586317294",
-    price: "$365.00",
+    price: "365.00",
     inStock: "Instock",
     delivery: "Normal",
     ratings: "🌟 🌟 🌟 🌟 🌟",
@@ -76,7 +76,7 @@ const products = [
     name: "Sugar Hill Bra",
     image:
       "https://cdn.shopify.com/s/files/1/0264/4469/3589/products/pro52.jpg?v=1586317313",
-    price: "$180.00",
+    price: "180.00",
     inStock: "Out of Stock",
     delivery: "Normal",
     ratings: "🌟 🌟 🌟 🌟 🌟",
@@ -90,7 +90,7 @@ const products = [
     name: "Push Up Bar",
     image:
       "https://cdn.shopify.com/s/files/1/0264/4469/3589/products/sp5.jpg?v=1586338541",
-    price: "$325.00",
+    price: "325.00",
     inStock: "Instock",
     delivery: "Normal",
     ratings: "🌟 🌟 🌟",
