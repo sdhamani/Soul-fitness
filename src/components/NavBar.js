@@ -1,5 +1,5 @@
 import "./components.css";
-export default function Nav() {
+export default function Nav({ route, setRoute }) {
   return (
     <nav class="navigation nav-ecom">
       <div class="container" id="ham-container" onclick="myFunction(this)">
@@ -9,19 +9,40 @@ export default function Nav() {
       </div>
       <ul class="list-no-bullets nav-pills">
         <li class="list-item-inline">
-          <a class="link " href="/">
+          <button
+            class={route === "landing" ? "link link-active" : "link"}
+            onClick={(e) => {
+              setRoute("landing");
+            }}
+          >
             Home
-          </a>
+          </button>
         </li>
         <li class="list-item-inline">
-          <a class="link link-active" href="/components.html">
+          <button
+            class={route === "products" ? "link link-active" : "link"}
+            onClick={(e) => {
+              setRoute("products");
+            }}
+          >
+            Products
+          </button>
+        </li>
+        <li class="list-item-inline">
+          <button
+            class={route === "wishlist" ? "link link-active" : "link"}
+            onClick={(e) => setRoute("wishlist")}
+          >
             Wishlist
-          </a>
+          </button>
         </li>
         <li class="list-item-inline">
-          <a class="link link-active" href="/components.html">
+          <button
+            class={route === "cart" ? "link link-active" : "link"}
+            onClick={(e) => setRoute("cart")}
+          >
             Cart
-          </a>
+          </button>
         </li>
       </ul>
     </nav>
