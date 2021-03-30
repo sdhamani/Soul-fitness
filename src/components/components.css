@@ -3,6 +3,7 @@
 :root {
   --primary-color: #2a2c2e;
   --secondary-color: #00cacd;
+  --action-bar-color: grey;
   --button-text-color: white;
 }
 
@@ -182,4 +183,17 @@
 .landing-best-products-h2 {
   font-size: 2rem;
   margin: 0.1rem;
+}
+
+/* products-page */
+
+.action-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 1rem 1rem;
+  width: 80%;
+  border: 1px solid grey;
+  margin: 1rem auto;
+  color: var(--action-bar-color);
 }
