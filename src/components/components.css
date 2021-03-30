@@ -21,6 +21,13 @@
   border-radius: 0;
 }
 
+.nav-ecom button {
+  background-color: var(--primary-color);
+  outline: none;
+  border: none;
+  font-size: large;
+}
+
 @media screen and (max-width: 767px) {
   .nav-ecom {
     width: 100%;
