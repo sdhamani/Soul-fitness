@@ -36,6 +36,10 @@
   .nav-ecom .list-no-bullets {
     margin-right: 4rem;
   }
+
+  .nav-ecom button {
+    font-size: small;
+  }
 }
 
 /* landing-page */
@@ -96,9 +100,10 @@
   .text-overlay-data-ecom {
     width: 28%;
     height: 8%;
-    top: 13%;
-    left: 52%;
+    top: 16%;
+    left: 55%;
     background-color: black;
+    animation: landing-page-mob 1s ease-in-out;
   }
 
   .text-overlay-h1 {
@@ -118,6 +123,21 @@
     font-size: x-small;
     padding: 0.1rem;
     margin: 1rem 3.3rem;
+  }
+
+  @keyframes landing-page-mob {
+    from {
+      top: 10%;
+      opacity: 0;
+      transform: scale(1);
+      transform: rotate(0deg);
+    }
+    to {
+      top: 18%;
+      opacity: 1;
+      transform: scale(1);
+      transform: rotate(0deg);
+    }
   }
 }
 
