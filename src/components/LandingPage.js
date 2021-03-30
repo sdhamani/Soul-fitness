@@ -54,7 +54,6 @@ export default function Landing() {
       </div>
       <footer class="footer">
         <div class="footer-header">GET IN TOUCH</div>
-        <p class="footer-text">The logo is inspired by SERENE Airlines</p>
         <ul>
           <li class="list-item-inline">
             <a

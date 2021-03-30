@@ -43,8 +43,8 @@
   height: 30%;
   color: white;
   position: absolute;
-  top: 35%;
-  left: 60%;
+  top: 44%;
+  left: 65%;
   background-color: black;
   display: flex;
   justify-items: flex-end;
@@ -55,7 +55,7 @@
   font-size: 2rem;
   transform: rotate(0deg) scale(1);
   text-align: right;
-  margin: 0.2rem 1.6rem;
+  margin: 0.2rem 9.9rem;
 }
 
 .text-overlay-h2 {
@@ -103,10 +103,13 @@
 .image-grid {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
   justify-content: center;
 }
+
 .responsive-img-ecom {
   margin: 1rem 0.4rem;
+  /* width: 40%; */
 }
 
 @media screen and (max-width: 767px) {
