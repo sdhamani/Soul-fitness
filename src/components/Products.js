@@ -10,6 +10,17 @@ export default function Products() {
     <div>
       <div class="action-bar">
         <div>
+          <label for="action">Sort By: </label>
+          <select
+            name="LOWTOHIGH"
+            id="LOWTOHIGH"
+            onChange={(e) => console.log(e)}
+          >
+            <option value="LOWTOHIGH">Low To High</option>
+            <option value="HIGHTOLOW">High to Low</option>
+          </select>
+        </div>
+        <div>
           Sort By :
           <label>
             <input
