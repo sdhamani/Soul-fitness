@@ -23,10 +23,6 @@ function dispatchfun(state, value) {
       } else {
         return { ...state, showOnlyFastDelivery: !state.showOnlyFastDelivery };
       }
-
-      //   value.payload === "OOS"
-      //     ? {return{ ...state, showAllProducts: !state.showAllProducts }}
-      //     : { ...state, showOnlyFastDelivery: !state.showOnlyFastDelivery };
     }
     default:
       return state;

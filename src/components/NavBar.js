@@ -1,16 +1,16 @@
 import "./components.css";
 export default function Nav({ route, setRoute }) {
   return (
-    <nav class="navigation nav-ecom">
-      <div class="container" id="ham-container" onclick="myFunction(this)">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </div>
-      <ul class="list-no-bullets nav-pills">
-        <li class="list-item-inline">
+    <nav className="navigation nav-ecom">
+      {/* <div className="container" id="ham-container" onClick="myFunction(this)">
+        <div className="bar1"></div>
+        <div className="bar2"></div>
+        <div className="bar3"></div>
+      </div> */}
+      <ul className="list-no-bullets nav-pills">
+        <li className="list-item-inline">
           <button
-            class={route === "landing" ? "link link-active" : "link"}
+            className={route === "landing" ? "link link-active" : "link"}
             onClick={(e) => {
               setRoute("landing");
             }}
@@ -18,9 +18,9 @@ export default function Nav({ route, setRoute }) {
             Home
           </button>
         </li>
-        <li class="list-item-inline">
+        <li className="list-item-inline">
           <button
-            class={route === "products" ? "link link-active" : "link"}
+            className={route === "products" ? "link link-active" : "link"}
             onClick={(e) => {
               setRoute("products");
             }}
@@ -28,17 +28,17 @@ export default function Nav({ route, setRoute }) {
             Products
           </button>
         </li>
-        <li class="list-item-inline">
+        <li className="list-item-inline">
           <button
-            class={route === "wishlist" ? "link link-active" : "link"}
+            className={route === "wishlist" ? "link link-active" : "link"}
             onClick={(e) => setRoute("wishlist")}
           >
             Wishlist
           </button>
         </li>
-        <li class="list-item-inline">
+        <li className="list-item-inline">
           <button
-            class={route === "cart" ? "link link-active" : "link"}
+            className={route === "cart" ? "link link-active" : "link"}
             onClick={(e) => setRoute("cart")}
           >
             Cart
