@@ -14,6 +14,7 @@ const products = [
     idealFor: "Men",
     level: "beginner",
     color: "white",
+    addedToCart: false,
   },
   {
     id: uuid(),
@@ -28,6 +29,7 @@ const products = [
     idealFor: "Men",
     level: "beginner",
     color: "Black",
+    addedToCart: false,
   },
   {
     id: uuid(),
@@ -42,6 +44,7 @@ const products = [
     idealFor: "Women",
     level: "beginner",
     color: "Black",
+    addedToCart: false,
   },
   {
     id: uuid(),
@@ -56,6 +59,7 @@ const products = [
     idealFor: "Men",
     level: "beginner",
     color: "White",
+    addedToCart: false,
   },
   {
     id: uuid(),
@@ -70,6 +74,7 @@ const products = [
     idealFor: "Men and Women",
     level: "beginner",
     color: "White-Blue",
+    addedToCart: false,
   },
   {
     id: uuid(),
@@ -84,6 +89,7 @@ const products = [
     idealFor: "Women",
     level: "beginner",
     color: "White-Blue",
+    addedToCart: false,
   },
   {
     id: uuid(),
@@ -98,6 +104,7 @@ const products = [
     idealFor: "Men and Women",
     level: "beginner",
     color: "Black-Orange",
+    addedToCart: false,
   },
 ];
 
