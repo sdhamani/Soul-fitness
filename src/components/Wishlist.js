@@ -7,6 +7,9 @@ export default function Wishlist() {
   console.log("Hello", { wishlist });
   return (
     <div>
+      {wishlist.length === 0 && (
+        <p className="cart-no-items">There are no more items in your wishLis</p>
+      )}
       <Card products={wishlist} />
     </div>
   );
