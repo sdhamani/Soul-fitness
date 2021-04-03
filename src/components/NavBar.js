@@ -2,12 +2,7 @@ import "./components.css";
 export default function Nav({ route, setRoute }) {
   return (
     <nav className="navigation nav-ecom">
-      {/* <div className="container" id="ham-container" onClick="myFunction(this)">
-        <div className="bar1"></div>
-        <div className="bar2"></div>
-        <div className="bar3"></div>
-      </div> */}
-      <ul className="list-no-bullets nav-pills">
+      <ul className="list-no-bullets nav-pills nav-list-ecom">
         <li className="list-item-inline">
           <button
             className={route === "landing" ? "link link-active" : "link"}
