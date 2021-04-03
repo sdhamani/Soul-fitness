@@ -1,11 +1,11 @@
 import "./components.css";
 import Nav from "./NavBar";
 import Card from "./Card";
-import products from "../data/products";
 import useProducts from "../context/products-context";
 
 export default function Products() {
   const { filteredArray, dispatch } = useProducts();
+
   return (
     <div>
       <div className="action-bar">
