@@ -5,13 +5,16 @@ import App from "./App";
 import { ProductProvider } from "./context/products-context.js";
 import { CartProvider } from "./context/cart-context.js";
 import { DataProvider } from "./context/data-context.js";
+import { WishlistProvider } from "./context/wishlist-context";
 
 ReactDOM.render(
   <React.StrictMode>
     <DataProvider>
       <ProductProvider>
         <CartProvider>
-          <App />
+          <WishlistProvider>
+            <App />
+          </WishlistProvider>
         </CartProvider>
       </ProductProvider>
     </DataProvider>
