@@ -8,25 +8,41 @@
 }
 
 /* Card components */
-.card-ecom {
+.cards-ecom {
   justify-content: center;
+}
+
+.card-ecom {
+  width: 16rem;
+  height: 25rem;
 }
 
 .card-content-ecom {
   text-align: center;
 }
 
+/* .card-image-ecom {
+  width: 15rem;
+  height: 13rem;
+} */
+
 /* Navigation */
 
 .nav-ecom {
   border-radius: 0;
+  padding: 0;
+  align-items: center;
 }
 
 .nav-ecom button {
   background-color: var(--primary-color);
   outline: none;
   border: none;
-  font-size: large;
+  font-size: 1rem;
+}
+
+.nav-list-ecom {
+  margin-right: 1rem;
 }
 
 @media screen and (max-width: 767px) {
@@ -56,7 +72,7 @@
   color: white;
   position: absolute;
   top: 44%;
-  left: 65%;
+  left: 60%;
   background-color: black;
   display: flex;
   justify-items: flex-end;
@@ -83,7 +99,7 @@
 .text-overlay-h1 {
   font-size: 2rem;
   text-align: right;
-  margin: 0.2rem 9.9rem;
+  margin: 0.2rem 2rem;
 }
 
 .text-overlay-h2 {
@@ -94,7 +110,7 @@
 .text-overlay-btn {
   width: 6rem;
   padding: 0.5rem;
-  margin: 1rem 24rem;
+  margin: 1rem 23.5rem;
 }
 
 @media screen and (max-width: 767px) {
@@ -102,7 +118,7 @@
     width: 28%;
     height: 8%;
     top: 16%;
-    left: 55%;
+    left: 63%;
     background-color: black;
     animation: landing-page-mob 1s ease-in-out;
   }
@@ -211,7 +227,7 @@
   height: 8%;
   color: white;
   position: absolute;
-  bottom: 37%;
+  bottom: 35%;
   background-color: black;
   display: flex;
   flex-direction: row;
@@ -234,9 +250,245 @@
   background-color: black;
   color: white;
   border: 0;
+  outline: none;
 }
 
 .card:hover .card-overlay-data {
   display: flex;
   flex-direction: row;
+}
+
+.red-heart {
+  color: red;
+  outline: none;
+}
+.alert-success {
+  position: fixed;
+  bottom: 0%;
+  left: 60%;
+  width: 40%;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: large;
+}
+
+/* cart */
+.cart {
+  display: flex;
+  flex-direction: row;
+}
+
+.cart-products {
+  margin: 2rem 6rem;
+  width: 50rem;
+  box-shadow: 2px 2px #888888;
+}
+
+.cart-product-heading {
+  margin-left: 2rem;
+  font-size: large;
+}
+
+.cart-no-items {
+  padding: 1rem 1rem;
+}
+
+.horizontal-card-ecom {
+  width: 100%;
+  height: 12rem;
+  margin: 0;
+  padding: 0.3rem;
+  box-shadow: none;
+  display: flex;
+  justify-content: space-around;
+  justify-items: center;
+  align-items: center;
+}
+
+.horizontal-data-ecom {
+  font-size: small;
+  /* margin: 2rem 3rem; */
+  width: 25%;
+  margin: 0;
+}
+
+.horizontal-card-heading-ecom {
+  color: var(--primary-color);
+  font-size: x-large;
+  margin: 0;
+  padding: 0;
+}
+
+.horizontal-card-image-ecom {
+  width: 22%;
+  height: 80%;
+}
+
+.counter-btn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.2rem 0.4rem;
+}
+
+.horizontal-card-total-price {
+  font-size: x-large;
+}
+
+.cart-delete-image {
+  background-color: white;
+  border: none;
+}
+
+.counter {
+  font-size: large;
+  margin: 0.5rem 0.5rem;
+}
+
+/* checkout-cart */
+
+.checkout-card {
+  box-shadow: 2px 2px #888888;
+  /* width: 25%; */
+}
+/* .checkout-item-color {
+  color: #00c4cd;
+} */
+
+.checkout-top {
+  margin: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.continue-shop-btn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.3rem;
+  font-size: large;
+  margin: 0rem 6rem;
+}
+
+.continue-shop-btn .fa {
+  padding: 0rem 0.3rem;
+}
+.checkout-values {
+  font-size: large;
+  padding: 0.5rem;
+  width: auto;
+}
+
+.checkout-btn {
+  background-color: var(--primary-color);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  /* margin: 1rem 7rem; */
+  padding: 0.4rem;
+  margin: auto;
+}
+
+.checkout-btn-div {
+  padding: 0.5rem 0rem;
+  display: flex;
+}
+
+.checkout-right-div {
+  display: flex;
+  flex-direction: column;
+  width: 23%;
+  margin-top: 2.5rem;
+  box-shadow: 2px 2px #888888;
+}
+
+.checkout-single-policy {
+  padding: 0.5rem;
+  margin: 1rem 0.5rem;
+  font-weight: 400;
+}
+
+.checkout-single-policy .fa {
+  padding-right: 1rem;
+}
+
+@media screen and (max-width: 767px) {
+  .cart-products {
+    width: 80%;
+    margin: auto;
+  }
+
+  .cart {
+    flex-direction: column;
+  }
+
+  .horizontal-card-ecom {
+    flex-direction: column;
+    width: 20rem;
+    height: auto;
+    justify-content: space-evenly;
+    margin: 0;
+    margin-right: 0;
+    margin: auto;
+  }
+
+  .horizontal-card-image-ecom {
+    width: 50%;
+  }
+  .horizontal-data-ecom {
+    width: 100%;
+    height: auto;
+    margin: 1rem;
+  }
+
+  .horizontal-card-heading-ecom {
+    width: 100%;
+    margin: 1rem 0rem;
+  }
+
+  .checkout-item-color {
+    width: 40%;
+    font-size: large;
+  }
+  .horizontal-card-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .counter-btn {
+    padding: 0rem 0rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .counter-btn .fa {
+    margin: auto;
+  }
+  .horizontal-card-total-price {
+    text-align: left;
+    align-items: left;
+    display: flex;
+    justify-content: flex-start;
+    margin: 1rem;
+  }
+
+  .continue-shop-btn {
+    margin: 2rem 3rem;
+  }
+
+  /* checkout-right-div */
+
+  .checkout-right-div {
+    width: 100%;
+  }
+  .checkout-card {
+    width: 80%;
+    margin: auto;
+  }
+  .checkout-policies {
+    width: 80%;
+    margin-top: 2rem;
+    margin: auto;
+    box-shadow: 4px 2px #888888;
+  }
 }
