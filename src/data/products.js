@@ -15,6 +15,7 @@ const products = [
     level: "beginner",
     color: "white",
     addedToCart: false,
+    addedToWishlist: false,
   },
   {
     id: uuid(),
@@ -30,6 +31,7 @@ const products = [
     level: "beginner",
     color: "Black",
     addedToCart: false,
+    addedToWishlist: false,
   },
   {
     id: uuid(),
@@ -45,6 +47,7 @@ const products = [
     level: "beginner",
     color: "Black",
     addedToCart: false,
+    addedToWishlist: false,
   },
   {
     id: uuid(),
@@ -60,6 +63,7 @@ const products = [
     level: "beginner",
     color: "White",
     addedToCart: false,
+    addedToWishlist: false,
   },
   {
     id: uuid(),
@@ -75,6 +79,7 @@ const products = [
     level: "beginner",
     color: "White-Blue",
     addedToCart: false,
+    addedToWishlist: false,
   },
   {
     id: uuid(),
@@ -90,6 +95,7 @@ const products = [
     level: "beginner",
     color: "White-Blue",
     addedToCart: false,
+    addedToWishlist: false,
   },
   {
     id: uuid(),
@@ -105,6 +111,7 @@ const products = [
     level: "beginner",
     color: "Black-Orange",
     addedToCart: false,
+    addedToWishlist: false,
   },
 ];
 
