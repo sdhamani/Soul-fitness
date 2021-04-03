@@ -9,7 +9,11 @@ export default function useData() {
 }
 
 export function DataProvider({ children }) {
-  const [data, setdata] = useState(products);
+  const [data, setData] = useState(products);
 
-  return <DataContainer.Provider>{children}</DataContainer.Provider>;
+  return (
+    <DataContainer.Provider value={{ data: data, setData: setData }}>
+      {children}
+    </DataContainer.Provider>
+  );
 }

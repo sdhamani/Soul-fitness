@@ -1,6 +1,7 @@
 import { createContext, useContext } from "react";
 import { useReducer } from "react";
 import products from "../data/products";
+import useData from "../context/data-context";
 
 const ProductContainer = createContext();
 
@@ -30,6 +31,8 @@ function dispatchfun(state, value) {
 }
 
 export function ProductProvider({ children }) {
+  const { data, setData } = useData();
+
   const [
     { showAllProducts, showOnlyFastDelivery, sortBy },
     dispatch,
@@ -53,7 +56,7 @@ export function ProductProvider({ children }) {
     return prodArray;
   };
 
-  const sortedArray = sortByFun(products, sortBy);
+  const sortedArray = sortByFun(data, sortBy);
 
   const filterArray = (
     sortedArray,
