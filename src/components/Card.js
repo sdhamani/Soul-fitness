@@ -70,10 +70,10 @@ export default function Card({ products }) {
                 disabled={item.addedToCart}
               >
                 {item.addedToCart ? (
-                  <i class="fa fa-check-circle fa-1x" aria-hidden="true"></i>
+                  <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
                 ) : (
                   <i
-                    className="fa fa-shopping-cart fa-1x"
+                    className="fa fa-shopping-cart fa-lg"
                     aria-hidden="true"
                   ></i>
                 )}
@@ -84,9 +84,9 @@ export default function Card({ products }) {
                 onClick={(e) => updateWishlist(item)}
               >
                 {item.addedToWishlist ? (
-                  <i class="fa fa-heart red-heart" aria-hidden="true"></i>
+                  <i class="fa fa-heart red-heart fa-lg" aria-hidden="true"></i>
                 ) : (
-                  <i class="fa fa-heart-o fa-1x" aria-hidden="true"></i>
+                  <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
                 )}
               </button>
             </div>
