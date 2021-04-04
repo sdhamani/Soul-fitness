@@ -6,14 +6,16 @@ import { ProductProvider } from "./context/products-context.js";
 import { CartProvider } from "./context/cart-context.js";
 import { DataProvider } from "./context/data-context.js";
 import { WishlistProvider } from "./context/wishlist-context";
-
+import { BrowserRouter as Router } from "react-router-dom";
 ReactDOM.render(
   <React.StrictMode>
     <DataProvider>
       <ProductProvider>
         <CartProvider>
           <WishlistProvider>
-            <App />
+            <Router>
+              <App />
+            </Router>
           </WishlistProvider>
         </CartProvider>
       </ProductProvider>
