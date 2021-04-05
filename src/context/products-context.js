@@ -10,37 +10,75 @@ export default function useProducts() {
 }
 
 function dispatchfun(state, value) {
-  console.log("Here");
+  // console.log("Hello123", { value });
   console.log(state, value);
   switch (value.type) {
     case "SORT":
       return { ...state, sortBy: value.payload };
     case "FILTER": {
-      console.log("There");
-      console.log({ value });
-      console.log({ state });
       if (value.payload === "OOS") {
         return { ...state, showAllProducts: !state.showAllProducts };
       } else {
         return { ...state, showOnlyFastDelivery: !state.showOnlyFastDelivery };
       }
     }
+    case "FILTERCAT": {
+      // console.log("Cavalue", value.payload);
+      console.log("rrr", state.filterByCateogory);
+      // console.log(value.payload in state.filterByCateogory);
+      return {
+        ...state,
+        filterByCateogory: state.filterByCateogory.includes(value.payload)
+          ? state.filterByCateogory.filter((item) => item !== value.payload)
+          : [...state.filterByCateogory, value.payload],
+      };
+    }
     default:
       return state;
   }
 }
 
+// function dispatchfun(state, value) {
+//   console.log({ state });
+//   switch (value.type) {
+//     case "SORT":
+//       let sortedArray;
+//       if (value.payload === "LOWTOHIGH") {
+//         sortedArray = state.sort(function (a, b) {
+//           return a["price"] - b["price"];
+//         });
+//       }
+//       if (value.payload === "HIGHTOLOW") {
+//         sortedArray = state.sort(function (a, b) {
+//           return b["price"] - a["price"];
+//         });
+//       }
+//       return sortedArray;
+//     case "FILTERSTO":
+//       return state.filter((item) => item.inStock === "Instock");
+//     case "FILTERDEL":
+//       return state.filter((item) => item.delivery === "Prime");
+//     case "FILTERCAT": {
+//       return state.filter((item) => item.cateogory === value.payload);
+//     }
+//     default:
+//       return state;
+//   }
+// }
 export function ProductProvider({ children }) {
   const { data, setData } = useData();
 
   const [
-    { showAllProducts, showOnlyFastDelivery, sortBy },
+    { showAllProducts, showOnlyFastDelivery, sortBy, filterByCateogory },
     dispatch,
   ] = useReducer(dispatchfun, {
     showAllProducts: true,
     showOnlyFastDelivery: false,
     sortBy: false,
+    filterByCateogory: [],
   });
+
+  // const [filteredArray, dispatch] = useReducer(dispatchfun, data);
 
   const sortByFun = (prodArray, sortBy) => {
     if (sortBy === "LOWTOHIGH") {
@@ -60,17 +98,20 @@ export function ProductProvider({ children }) {
 
   const filterArray = (
     sortedArray,
-    { showAllProducts, showOnlyFastDelivery }
+    { showAllProducts, showOnlyFastDelivery, filterByCateogory }
   ) => {
-    // console.log("FA", showOnlyFastDelivery);
     let fa = sortedArray;
     if (!showAllProducts) {
-      //   console.log("IS");
+      console.log("IS");
       fa = fa.filter((item) => item.inStock === "Instock");
     }
     if (showOnlyFastDelivery) {
-      //   console.log("FD");
+      console.log("FD");
       fa = fa.filter((item) => item.delivery === "Prime");
+    }
+    if (filterByCateogory.length !== 0) {
+      console.log("FMH", filterByCateogory);
+      fa = fa.filter((item) => filterByCateogory.includes(item.cateogory));
     }
     return fa;
   };
@@ -78,13 +119,17 @@ export function ProductProvider({ children }) {
   const filteredArray = filterArray(sortedArray, {
     showAllProducts,
     showOnlyFastDelivery,
+    filterByCateogory,
   });
 
   return (
     <ProductContainer.Provider
-      value={{ filteredArray: filteredArray, dispatch: dispatch }}
+      value={{
+        filteredArray: filteredArray,
+        dispatch: dispatch,
+      }}
     >
-      {children}
+      {children}{" "}
     </ProductContainer.Provider>
   );
 }
