@@ -57,7 +57,7 @@ export default function Card({ products }) {
     <div className="cards cards-ecom">
       {products.map((item) => {
         return (
-          <div className="card  card-ecom" key={item.id}>
+          <div className="card card-ecom" key={item.id}>
             <img
               className="card-image text-overlay-image card-image-ecom"
               alt="NA"

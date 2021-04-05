@@ -1,4 +1,5 @@
 import Card from "./Card";
+import FeatureProducts from "./FeatureProducts";
 import products from "../data/products";
 
 export default function Landing() {
@@ -50,7 +51,7 @@ export default function Landing() {
       <div className="landing-best-products">
         <p className="landing-best-products-h1">The Best Products Of Catalan</p>
         <p className="landing-best-products-h2">FEATURE PRODUCTS</p>
-        <Card products={products.slice(1, 7)} />
+        <FeatureProducts products={products.slice(1, 7)} />
       </div>
       <footer className="footer">
         <div className="footer-header">GET IN TOUCH</div>
