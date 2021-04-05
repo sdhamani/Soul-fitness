@@ -54,53 +54,60 @@ export default function Card({ products }) {
   };
 
   return (
-    <div className="cards cards-ecom">
-      {products.map((item) => {
-        return (
-          <div className="card card-ecom" key={item.id}>
-            <img
-              className="card-image text-overlay-image card-image-ecom"
-              alt="NA"
-              src={item.image}
-            />
-            <div className="card-overlay-data">
-              <button
-                className="cart-image"
-                onClick={(e) => addedToCart(item)}
-                disabled={item.addedToCart}
-              >
-                {item.addedToCart ? (
-                  <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
-                ) : (
-                  <i
-                    className="fa fa-shopping-cart fa-lg"
-                    aria-hidden="true"
-                  ></i>
-                )}
-              </button>
+    <div>
+      <div className="cards cards-ecom">
+        {products.map((item) => {
+          return (
+            <div className="card card-ecom" key={item.id}>
+              <img
+                className="card-image text-overlay-image card-image-ecom"
+                alt="NA"
+                src={item.image}
+              />
+              <div className="card-overlay-data">
+                <button
+                  className="cart-image"
+                  onClick={(e) => addedToCart(item)}
+                  disabled={item.addedToCart}
+                >
+                  {item.addedToCart ? (
+                    <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
+                  ) : (
+                    <i
+                      className="fa fa-shopping-cart fa-lg"
+                      aria-hidden="true"
+                    ></i>
+                  )}
+                </button>
 
-              <button
-                className="cart-image"
-                onClick={(e) => updateWishlist(item)}
-              >
-                {item.addedToWishlist ? (
-                  <i class="fa fa-heart red-heart fa-lg" aria-hidden="true"></i>
-                ) : (
-                  <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
-                )}
-              </button>
+                <button
+                  className="cart-image"
+                  onClick={(e) => updateWishlist(item)}
+                >
+                  {item.addedToWishlist ? (
+                    <i
+                      class="fa fa-heart red-heart fa-lg"
+                      aria-hidden="true"
+                    ></i>
+                  ) : (
+                    <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
+                  )}
+                </button>
+              </div>
+              <div className="card-content card-content-ecom">
+                <div>{item.ratings}</div>
+                <h4>{item.name}</h4>
+                <div className="card-lighter-data">
+                  {item.delivery} Delivery
+                </div>
+                <div className="card-lighter-data">{item.inStock}</div>
+                <p className="card-data card-data">${item.price}</p>
+              </div>
             </div>
-            <div className="card-content card-content-ecom">
-              <div>{item.ratings}</div>
-              <h4>{item.name}</h4>
-              {/* <h3>{item.delivery}</h3>
-              <h3>{item.inStock}</h3> */}
-              <p className="card-data card-data">${item.price}</p>
-            </div>
-          </div>
-        );
-      })}
-      {showalert && <AlertComp />}
+          );
+        })}
+        {showalert && <AlertComp />}
+      </div>
     </div>
   );
 }
