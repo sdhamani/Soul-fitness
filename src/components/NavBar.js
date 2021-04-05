@@ -17,7 +17,9 @@ export default function Nav({ route, setRoute }) {
             }}
           >
             {" "}
-            <i class="fa fa-home fa-lg badge-icons" aria-hidden="true"></i>{" "}
+            <div className="badge-div">
+              <i class="fa fa-home fa-lg badge-icons" aria-hidden="true"></i>{" "}
+            </div>
           </NavLink>
         </li>
         <li className="list-item-inline">
@@ -28,7 +30,9 @@ export default function Nav({ route, setRoute }) {
             }}
           >
             {" "}
-            <i class="fa fa-product-hunt" aria-hidden="true"></i>
+            <div className="badge-div">
+              <i class="fa fa-product-hunt" aria-hidden="true"></i>
+            </div>
           </NavLink>
         </li>
         <li className="list-item-inline">
@@ -48,6 +52,7 @@ export default function Nav({ route, setRoute }) {
             </div>
           </NavLink>
         </li>
+
         <li className="list-item-inline">
           <NavLink
             to="/cart"
@@ -68,59 +73,6 @@ export default function Nav({ route, setRoute }) {
             </div>
           </NavLink>
         </li>
-        {/* <li className="list-item-inline">
-          <button
-            className={route === "landing" ? "link link-active" : "link"}
-            onClick={(e) => {
-              setRoute("landing");
-            }}
-          >
-            <i class="fa fa-home fa-lg badge-icons" aria-hidden="true"></i>
-          </button>
-        </li> */}
-        {/* <li className="list-item-inline">
-          <button
-            className={route === "products" ? "link link-active" : "link"}
-            onClick={(e) => {
-              setRoute("products");
-            }}
-          >
-            <i class="fa fa-product-hunt" aria-hidden="true"></i>
-          </button>
-        </li>
-        <li className="list-item-inline">
-          <button
-            className={route === "wishlist" ? "link link-active" : "link"}
-            onClick={(e) => setRoute("wishlist")}
-          >
-            <div className="badge-div">
-              <i class="fa fa-heart fa-lg badge-icons" aria-hidden="true">
-                {" "}
-                <span class="badge-on-icon badge-on-icon-ecom">
-                  {wishlist.length > 0 && wishlist.length}
-                </span>
-              </i>
-            </div>
-          </button>
-        </li> */}
-        {/* <li className="list-item-inline">
-          <button
-            className={route === "cart" ? "link link-active" : "link"}
-            onClick={(e) => setRoute("cart")}
-          >
-            <div className="badge-div">
-              <i
-                class="fa fa-shopping-cart fa-lg badge-icons"
-                aria-hidden="true"
-              >
-                {" "}
-                <span class="badge-on-icon badge-on-icon-ecom">
-                  {cart.length > 0 && cart.length}
-                </span>
-              </i>
-            </div>
-          </button>
-        </li> */}
       </ul>
     </nav>
   );
