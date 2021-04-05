@@ -1,6 +1,7 @@
 import Card from "./Card";
 import FeatureProducts from "./FeatureProducts";
 import products from "../data/products";
+import { Link } from "react-router-dom";
 
 export default function Landing() {
   return (
@@ -15,8 +16,7 @@ export default function Landing() {
           <div className="text-overlay-h1">COLLECTION</div>
           <div className="text-overlay-h2">Sportswear</div>
           <button className="btn primary-button text-overlay-btn " href="/">
-            {" "}
-            Shop Now !{" "}
+            <Link to="/products"> Shop Now !</Link>{" "}
           </button>
         </div>
       </div>

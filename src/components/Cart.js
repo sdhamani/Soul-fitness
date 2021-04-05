@@ -1,4 +1,5 @@
 import useCart from "../context/cart-context";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
   const { cart, dispatch } = useCart();
@@ -76,7 +77,8 @@ export default function Cart() {
               })}
           </div>
           <button className="seconday-button continue-shop-btn">
-            <i class="fa fa-arrow-left" aria-hidden="true"></i>Continue Shopping
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            <Link to="/products">Continue Shopping</Link>
           </button>
         </div>
 
