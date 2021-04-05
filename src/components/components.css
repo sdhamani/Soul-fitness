@@ -13,18 +13,22 @@
 }
 
 .card-ecom {
-  width: 16rem;
+  margin: 2rem 1.3rem;
+  width: 14rem;
   height: 25rem;
+  box-shadow: 0 10px 22px rgb(0 0 0 / 9%), 0 10px 10px rgb(0 0 0 / 9%);
 }
 
 .card-content-ecom {
-  text-align: center;
+  text-align: left;
 }
 
-/* .card-image-ecom {
-  width: 15rem;
-  height: 13rem;
-} */
+.card-image-ecom {
+  padding: 3rem 3rem;
+  width: 80%;
+  height: 10rem;
+  text-align: left;
+}
 
 /* Navigation */
 
@@ -50,29 +54,27 @@
 .list-item-inline a {
   text-decoration: none;
   color: white;
-  margin: 0rem 1rem;
+  margin: 0rem 4rem;
 }
+
 .nav-list-ecom {
-  margin-right: 1rem;
+  margin: 0rem 0rem;
+  margin-right: 0rem;
   display: flex;
 }
 
-.badge-div {
-  margin-top: 0.3rem;
-}
-.badge-icons {
-  width: auto;
-}
-
 .badge-on-icon-ecom {
-  top: -1rem !important;
-  width: 0.8rem;
-  left: 1rem;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
+  left: 0.8rem;
+  top: -1rem;
+}
+
+.fa-shopping-cart {
+  color: white;
 }
 
 .badge-div {
-  margin-top: 0.1rem;
+  margin: auto;
 }
 @media screen and (max-width: 767px) {
   .nav-ecom {
@@ -90,6 +92,10 @@
   .nav-ecom button {
     font-size: small;
   }
+
+  .list-item-inline a {
+    margin: 0rem 3rem;
+  }
 }
 
 /* landing-page */
@@ -104,7 +110,7 @@
   height: 30%;
   color: white;
   position: absolute;
-  top: 44%;
+  top: 40%;
   left: 60%;
   background-color: black;
   display: flex;
@@ -112,6 +118,7 @@
   flex-direction: column;
   animation: landing-page 1s ease-in-out;
   transform: rotate(0deg);
+  border-radius: 4rem;
 }
 
 @keyframes landing-page {
