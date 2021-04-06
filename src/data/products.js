@@ -444,7 +444,7 @@ const products = [
     color: "black",
     addedToCart: false,
     addedToWishlist: false,
-    cateogory: "pants",
+    cateogory: "Pants",
     description: `Made of 87% polyester and 13% spandex. The material is soft, breathable and durable, delivery you a comfortable wear experience. Pants' fabric is thick enough and non see throungh, could as your dressy occasion pants, wear outdoors safety.`,
     brand: "Gradual",
     discountedPrice: "26.99",
@@ -467,7 +467,7 @@ const products = [
     color: "green",
     addedToCart: false,
     addedToWishlist: false,
-    cateogory: "Tee-Shirt",
+    cateogory: "T Shirt",
     description: `Stay dry as you sweat in the Ladies NexGen Wicking Tee by Augusta Sportswear. This classic athletic tee's 100% polyester wicking fabric make it a training staple.`,
     brand: "Augusta",
     discountedPrice: "4.20",
@@ -519,29 +519,7 @@ const products = [
     discountedPrice: "13.00",
     size: ["S", "M", "L", "XL"],
   },
-  {
-    id: uuid(),
-    name: "Wiholl women's casual 2 peice",
-    link:
-      "https://www.amazon.com/Women-Outfits-Striped-Sportswear-Orange/dp/B08BNTJSK6/ref=sr_1_12?dchild=1&keywords=sportswear+for+women&qid=1617615372&sr=8-12",
-    image:
-      "https://images-na.ssl-images-amazon.com/images/I/81dAoIxuNnL._AC_UY741_.jpg",
-    price: "18.99",
-    inStock: "InStock",
-    delivery: "Prime",
-    ratings: "🌟 🌟 🌟",
-    offer: "Save 50",
-    idealFor: "Women",
-    level: "beginner",
-    color: "brown",
-    addedToCart: false,
-    addedToWishlist: false,
-    cateogory: "Top",
-    description: `hort Sleeve Two Piece Outfits, Solid Color Sets for Women, Round Neck Crop Tops + Shorts, Sexy Active Tracksuits, Soft Athletic Clothing Sets.`,
-    brand: "Wiholl",
-    discountedPrice: "18.99",
-    size: ["S", "M", "L", "XL"],
-  },
+
   {
     id: uuid(),
     name: "QUEENIEKE Women's Sports Jacket Slim Fit Running Jacket",
@@ -898,8 +876,7 @@ const products = [
   },
   {
     id: uuid(),
-    name:
-      "BalanceFrom GoYoga All-Purpose 1/2-Inch Extra Thick High Density Anti-Tear",
+    name: "BalanceFrom GoYoga High Density Anti-Tear",
     link:
       "https://www.amazon.com/BalanceFrom-BFGY-AP6RD-Anti-Tear-Exercise-Carrying/dp/B00FO9ZRYQ/ref=sr_1_5?dchild=1&keywords=yoga+mat&qid=1617709001&sr=8-5",
     image:
@@ -965,8 +942,7 @@ const products = [
   },
   {
     id: uuid(),
-    name:
-      "Amazon Basics High-Density Exercise, Massage, Muscle Recovery, Round Foam Roller ",
+    name: "High-Density Exercise, Massage, Round Foam Rolle ",
     link:
       "https://www.amazon.com/AmazonBasics-High-Density-Round-Roller-36-inches/dp/B00XM2MRGI/ref=sr_1_55?dchild=1&qid=1617709506&s=sporting-goods&sr=1-55",
     image:
@@ -1121,8 +1097,7 @@ const products = [
   },
   {
     id: uuid(),
-    name:
-      "Medical Folding Pedal Exerciser with Electronic Display for Legs and Arms Workout ",
+    name: "Medical Folding Pedal Exerciser with Electronic Display ",
     link:
       "https://www.amazon.com/Vaunn-Exerciser-Electronic-Assembled-Exercise/dp/B07XLP3WZK/ref=sr_1_56?dchild=1&fst=as%3Aoff&pf_rd_i=16225014011&pf_rd_m=ATVPDKIKX0DER&pf_rd_p=a3460e00-9eac-4cab-9814-093998a3f6d8&pf_rd_r=7BHJPFW5CPRKG585CHJB&pf_rd_s=merchandised-search-4&pf_rd_t=101&qid=1617710601&rnid=10971181011&s=sporting-goods&sr=1-565",
     image:
