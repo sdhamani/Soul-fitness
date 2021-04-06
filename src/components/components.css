@@ -39,6 +39,10 @@
   border-radius: 0;
   padding: 0;
   align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  margin-bottom: 2rem;
 }
 .nav-heading {
   font-size: 1.5rem;
@@ -162,6 +166,9 @@
 }
 
 @media screen and (max-width: 767px) {
+  .landing-page {
+    margin-top: 4rem;
+  }
   .text-overlay-data-ecom {
     width: 28%;
     height: 8%;
@@ -251,8 +258,7 @@
 
 /* products-page */
 .products-flex {
-  /* display: flex;
-  flex-direction: row; */
+  margin-top: 4rem;
 }
 
 .action-bar {
@@ -303,7 +309,8 @@
   .actions-div-sort {
     display: block;
     position: fixed;
-    top: 76vh;
+    bottom: 0rem;
+    /* top: 76vh; */
     z-index: 20;
     border: 1px solid grey;
     width: 100%;
@@ -342,7 +349,8 @@
   .mobile-actions {
     width: 100%;
     position: fixed;
-    top: 92vh;
+    bottom: 0rem;
+    /* top: 92vh; */
     z-index: 1;
     display: block;
   }
@@ -418,6 +426,7 @@
 .cart {
   display: flex;
   flex-direction: row;
+  margin-top: 4rem;
 }
 
 .cart-products {
@@ -647,6 +656,9 @@
 
 /* wishlist */
 
+.wishlist-page {
+  margin-top: 5rem;
+}
 .wishlist-no-items {
   margin-top: 1rem 1rem;
   width: 80%;
