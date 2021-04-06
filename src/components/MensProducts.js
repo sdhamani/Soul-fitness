@@ -1,13 +1,14 @@
-import "./components.css";
-import Nav from "./NavBar";
+import React from "react";
 import Card from "./Card";
+import "./components.css";
 import useProducts from "../context/products-context";
 import { useState } from "react";
-
-export default function Products() {
-  const { filteredArray, dispatch } = useProducts();
+function MensProducts() {
+  let { filteredArray, dispatch } = useProducts();
 
   const [mobilesort, setMobilesort] = useState(false);
+
+  filteredArray = filteredArray.filter((item) => item.idealFor === "Men");
 
   return (
     <div className="products-flex">
@@ -52,7 +53,7 @@ export default function Products() {
             </div>
           </div>
           <div className="actions-div-brands">
-            <h4 className="actions-heading">FILTER BY BRANDS</h4>
+            <h5 className="actions-heading">FILTER BY CATEOGORY</h5>
             <div className="actions-types">
               {" "}
               <div className="actions-types">
@@ -114,16 +115,6 @@ export default function Products() {
                   name="Vest"
                 />
                 <label for="Vest">Vest</label>
-              </div>
-              <div className="actions-types">
-                <input
-                  type="checkbox"
-                  onClick={() =>
-                    dispatch({ type: "FILTERCAT", payload: "Jacket" })
-                  }
-                  name="Jacket"
-                />
-                <label for="Jacket">Jacket</label>
               </div>
             </div>
           </div>
@@ -287,3 +278,5 @@ export default function Products() {
     </div>
   );
 }
+
+export default MensProducts;

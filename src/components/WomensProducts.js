@@ -1,13 +1,14 @@
-import "./components.css";
-import Nav from "./NavBar";
+import React from "react";
 import Card from "./Card";
+import "./components.css";
 import useProducts from "../context/products-context";
 import { useState } from "react";
-
-export default function Products() {
-  const { filteredArray, dispatch } = useProducts();
+function WomensProducts() {
+  let { filteredArray, dispatch } = useProducts();
 
   const [mobilesort, setMobilesort] = useState(false);
+
+  filteredArray = filteredArray.filter((item) => item.idealFor === "Women");
 
   return (
     <div className="products-flex">
@@ -52,7 +53,7 @@ export default function Products() {
             </div>
           </div>
           <div className="actions-div-brands">
-            <h4 className="actions-heading">FILTER BY BRANDS</h4>
+            <h5 className="actions-heading">FILTER BY CATEOGORY</h5>
             <div className="actions-types">
               {" "}
               <div className="actions-types">
@@ -89,31 +90,11 @@ export default function Products() {
                 <input
                   type="checkbox"
                   onClick={() =>
-                    dispatch({ type: "FILTERCAT", payload: "Upper Tights" })
+                    dispatch({ type: "FILTERCAT", payload: "Top" })
                   }
-                  name="Upper Tights"
+                  name="Top"
                 />
-                <label for="Upper Tights">Upper Tights</label>
-              </div>
-              <div className="actions-types">
-                <input
-                  type="checkbox"
-                  onClick={() =>
-                    dispatch({ type: "FILTERCAT", payload: "Undershirt" })
-                  }
-                  name="Undershirt"
-                />
-                <label for="Undershirt">Undershirt</label>
-              </div>
-              <div className="actions-types">
-                <input
-                  type="checkbox"
-                  onClick={() =>
-                    dispatch({ type: "FILTERCAT", payload: "Vest" })
-                  }
-                  name="Vest"
-                />
-                <label for="Vest">Vest</label>
+                <label for="Top">Top</label>
               </div>
               <div className="actions-types">
                 <input
@@ -124,6 +105,26 @@ export default function Products() {
                   name="Jacket"
                 />
                 <label for="Jacket">Jacket</label>
+              </div>
+              <div className="actions-types">
+                <input
+                  type="checkbox"
+                  onClick={() =>
+                    dispatch({ type: "FILTERCAT", payload: "Shorts" })
+                  }
+                  name="Shorts"
+                />
+                <label for="Shorts">Shorts</label>
+              </div>
+              <div className="actions-types">
+                <input
+                  type="checkbox"
+                  onClick={() =>
+                    dispatch({ type: "FILTERCAT", payload: "Bra" })
+                  }
+                  name="Bra"
+                />
+                <label for="Bra">Bra</label>
               </div>
             </div>
           </div>
@@ -287,3 +288,5 @@ export default function Products() {
     </div>
   );
 }
+
+export default WomensProducts;
