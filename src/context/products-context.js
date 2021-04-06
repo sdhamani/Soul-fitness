@@ -38,33 +38,6 @@ function dispatchfun(state, value) {
   }
 }
 
-// function dispatchfun(state, value) {
-//   console.log({ state });
-//   switch (value.type) {
-//     case "SORT":
-//       let sortedArray;
-//       if (value.payload === "LOWTOHIGH") {
-//         sortedArray = state.sort(function (a, b) {
-//           return a["price"] - b["price"];
-//         });
-//       }
-//       if (value.payload === "HIGHTOLOW") {
-//         sortedArray = state.sort(function (a, b) {
-//           return b["price"] - a["price"];
-//         });
-//       }
-//       return sortedArray;
-//     case "FILTERSTO":
-//       return state.filter((item) => item.inStock === "Instock");
-//     case "FILTERDEL":
-//       return state.filter((item) => item.delivery === "Prime");
-//     case "FILTERCAT": {
-//       return state.filter((item) => item.cateogory === value.payload);
-//     }
-//     default:
-//       return state;
-//   }
-// }
 export function ProductProvider({ children }) {
   const { data, setData } = useData();
 
@@ -77,8 +50,6 @@ export function ProductProvider({ children }) {
     sortBy: false,
     filterByCateogory: [],
   });
-
-  // const [filteredArray, dispatch] = useReducer(dispatchfun, data);
 
   const sortByFun = (prodArray, sortBy) => {
     if (sortBy === "LOWTOHIGH") {

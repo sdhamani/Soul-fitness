@@ -10,10 +10,6 @@ export default function useCart() {
 export function CartProvider({ children }) {
   const { data, setData } = useData();
   const dispatchFunc = (state, value) => {
-    console.log("Hereindispatch");
-    console.log(state, {
-      value,
-    });
     const obj = value.payload;
     switch (value.type) {
       case "ADDTOCART":
