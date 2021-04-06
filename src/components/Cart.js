@@ -78,7 +78,7 @@ export default function Cart() {
           </div>
           <button className="seconday-button continue-shop-btn">
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
-            <Link to="/products">Continue Shopping</Link>
+            <Link to="/mens">Continue Shopping</Link>
           </button>
         </div>
 
