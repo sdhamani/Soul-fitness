@@ -12,26 +12,33 @@ export default function Card({ products }) {
 
   const [showalert, setShowAlert] = useState(false);
 
-  const changeShowAlert = () => {
-    setShowAlert(true);
+  const changeShowAlert = (text) => {
+    setShowAlert(text);
     setTimeout(() => {
       setShowAlert(false);
     }, 2000);
   };
 
   function AlertComp() {
-    return (
-      <div className="alert">
-        <h3 className="alert-success">
-          <i
-            className="fa fa-check-circle"
-            style={{ color: "#34d399", paddingRight: "1%" }}
-            aria-hidden="true"
-          ></i>
-          Item successfully added to the Cart !!!
-        </h3>
-      </div>
-    );
+    if (showalert !== "Item successfully removed from the Wishlist !!!") {
+      return (
+        <div className="alert">
+          <h3 className="alert-success">
+            <i className="fa fa-check-circle" aria-hidden="true"></i>{" "}
+            {showalert}
+          </h3>
+        </div>
+      );
+    } else {
+      return (
+        <div class="alert">
+          <h3 class="alert-warning">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            {showalert}
+          </h3>
+        </div>
+      );
+    }
   }
 
   const addedToCart = (item) => {
@@ -40,7 +47,7 @@ export default function Card({ products }) {
     );
     setData(updatedData);
     dispatch({ type: "ADDTOCART", payload: item });
-    changeShowAlert();
+    changeShowAlert("Item successfully added to the Cart !!!");
   };
 
   const updateWishlist = (item) => {
@@ -51,6 +58,9 @@ export default function Card({ products }) {
     );
     setData(updatedData);
     wishlistdispatch({ type: "UPDATEWISHLIST", payload: item });
+    item.addedToWishlist
+      ? changeShowAlert("Item successfully removed from the Wishlist !!!")
+      : changeShowAlert("Item successfully added to the Wishlist !!!");
   };
 
   return (
