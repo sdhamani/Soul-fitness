@@ -19,10 +19,10 @@ export default function Wishlist() {
     wishlistdispatch({ type: "UPDATEWISHLIST", payload: item });
   };
   return (
-    <div>
+    <div className="wishlist-page">
       {wishlist.length === 0 && (
         <p className="wishlist-no-items">
-          There are no more items in your wishLis
+          There are no more items in your Wishlist.
         </p>
       )}
       <div className="cards cards-ecom">
@@ -39,7 +39,6 @@ export default function Wishlist() {
                   className="cart-image"
                   onClick={(e) => updateWishlist(item)}
                 >
-                  Remove from Wishlist
                   <i class="fa fa-heart red-heart fa-lg" aria-hidden="true"></i>
                 </button>
               </div>
