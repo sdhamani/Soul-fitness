@@ -1,15 +1,43 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useLogin from "../context/login-context";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
+  const { state } = useLocation();
   const [passwordError, setPasswordError] = useState("");
+  const [credentialsError, setCredentialsError] = useState("");
+  const { loggedIn, setloggedIn } = useLogin();
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+  const navigate = useNavigate();
+  const userEmail = "test@gmail.com";
+  const userPassword = "Test@1234";
+
+  const signInUser = () => {
+    if (email === userEmail) {
+      if (password === userPassword) {
+        setloggedIn(true);
+        localStorage?.setItem(
+          "login",
+          JSON.stringify({ isUserLoggedIn: true })
+        );
+        navigate(state?.from ? state.from : "/");
+      } else {
+        setCredentialsError("Incorrect Password");
+        setloggedIn(false);
+      }
+    } else {
+      setCredentialsError("Incorrect Email");
+      setloggedIn(false);
+    }
+  };
 
   useEffect(() => {
+    setCredentialsError("");
     var re = /\S+@\S+\.\S\S+/;
     if (email.length === 0) {
       setEmailError("This field is required");
@@ -21,6 +49,7 @@ export default function Login() {
   }, [email]);
 
   useEffect(() => {
+    setCredentialsError("");
     let special = /[\W]{1,}/;
     if (password.length === 0) {
       setPasswordError("This field is required");
@@ -48,12 +77,6 @@ export default function Login() {
     <div className="login-div">
       <div className="login-center-div">
         <div className="login-card">
-          {/* <i
-            onClick={true}
-            class="fa fa-times-circle-o fa-lg"
-            aria-hidden="true"
-          ></i> */}
-
           <h1 className="login-account">Login Account</h1>
 
           <div className="login-input-div">
@@ -86,6 +109,11 @@ export default function Login() {
               <p className="input-check">Success</p>
             )}
           </div>
+          <div className="error-message-div">
+            {credentialsError !== "" ? (
+              <p className="input-check">{credentialsError}</p>
+            ) : null}
+          </div>
 
           <input
             type="submit"
@@ -93,6 +121,7 @@ export default function Login() {
             className={
               isSubmitDisabled ? "disabled-btn" : "btn primary-button signin"
             }
+            onClick={(e) => signInUser()}
             disabled={isSubmitDisabled}
           ></input>
 
