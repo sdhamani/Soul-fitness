@@ -89,6 +89,21 @@ export default function Nav({ route, setRoute }) {
               </div>
             </NavLink>
           </li>
+          <li className="list-item-inline">
+            <NavLink to="/cart" activeClassName="nav-active-icon">
+              <div className="badge-div">
+                <i
+                  class="fa fa-user-circle fa-lg badge-icons"
+                  aria-hidden="true"
+                >
+                  {" "}
+                  {/* <span class="badge-on-icon badge-on-icon-ecom">
+                    {cart.length > 0 && cart.length}
+                  </span> */}
+                </i>
+              </div>
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </div>
