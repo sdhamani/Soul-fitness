@@ -1,17 +1,27 @@
 import "./components.css";
 import useCart from "../context/cart-context";
-import { Routes, Route, NavLink, Link } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useWishlist from "../context/wishlist-context";
 import { useState } from "react";
+import useLogin from "../context/login-context";
+
 export default function Nav({ route, setRoute }) {
   const { cart } = useCart();
   const { wishlist } = useWishlist();
   const [hamDisplay, setHamDisplay] = useState(false);
-  console.log("ham", hamDisplay);
+  const [logoutBtn, setlogoutBtn] = useState(true);
+  const { loggedIn, setloggedIn } = useLogin();
+  const navigate = useNavigate();
 
   function myFunction() {
     console.log("hamfun", hamDisplay);
     setHamDisplay(!hamDisplay);
+  }
+
+  function logoutFun() {
+    setloggedIn(false);
+    localStorage?.setItem("login", JSON.stringify({ isUserLoggedIn: false }));
+    navigate("/");
   }
   return (
     <div>
@@ -50,6 +60,32 @@ export default function Nav({ route, setRoute }) {
             EQUIPMENT
           </NavLink>
         </div>
+        {loggedIn && (
+          <div>
+            <div
+              className="loggenin-Name"
+              onClick={(e) => setlogoutBtn(!logoutBtn)}
+            >
+              <div className="nav-username">Hi Sagar !</div>
+              <div className="badge-div">
+                <i
+                  class="fa fa-user-circle fa-lg badge-icons logged-in-user"
+                  aria-hidden="true"
+                >
+                  {" "}
+                </i>
+              </div>
+            </div>
+            <div
+              onClick={(e) => logoutFun()}
+              className={
+                logoutBtn ? "logout-btn-div  nodisplay " : "logout-btn-div"
+              }
+            >
+              <button className="logout_btn btn">Logout</button>
+            </div>
+          </div>
+        )}
 
         <ul className="list-no-bullets nav-pills nav-list-ecom">
           <li className="list-item-inline">
@@ -89,21 +125,21 @@ export default function Nav({ route, setRoute }) {
               </div>
             </NavLink>
           </li>
-          <li className="list-item-inline">
-            <NavLink to="/cart" activeClassName="nav-active-icon">
-              <div className="badge-div">
-                <i
-                  class="fa fa-user-circle fa-lg badge-icons"
-                  aria-hidden="true"
-                >
-                  {" "}
-                  {/* <span class="badge-on-icon badge-on-icon-ecom">
-                    {cart.length > 0 && cart.length}
-                  </span> */}
-                </i>
-              </div>
-            </NavLink>
-          </li>
+          {!loggedIn && (
+            <li className="list-item-inline">
+              <NavLink to="/login" activeClassName="nav-active-icon">
+                <div className="badge-div">
+                  <i
+                    class="fa fa-user-circle fa-lg badge-icons"
+                    aria-hidden="true"
+                  >
+                    {" "}
+                  </i>
+                </div>
+              </NavLink>
+            </li>
+          )}
+          <li></li>
         </ul>
       </nav>
     </div>
