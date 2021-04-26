@@ -70,9 +70,7 @@ export default function Login() {
           </div>
           {userNameError !== "" ? (
             <p className="input-check">{userNameError}</p>
-          ) : (
-            <p className="input-check">Success</p>
-          )}
+          ) : null}
           <div className="login-input-div">
             <input
               className="login-input"
@@ -84,9 +82,7 @@ export default function Login() {
           </div>
           {emailError !== "" ? (
             <p className="input-check">{emailError}</p>
-          ) : (
-            <p className="input-check">Success</p>
-          )}
+          ) : null}
           <div className="login-input-div">
             <input
               className="login-input"
@@ -96,19 +92,18 @@ export default function Login() {
               type="password"
             ></input>
           </div>
-          <div className="error-message-div">
-            {passwordError !== "" ? (
-              <p className="input-check">{passwordError}</p>
-            ) : (
-              <p className="input-check">Success</p>
-            )}
-          </div>
+
+          {passwordError !== "" ? (
+            <p className="input-check">{passwordError}</p>
+          ) : null}
 
           <input
             type="submit"
             value="CREATE"
             className={
-              isSubmitDisabled ? "disabled-btn" : "btn primary-button signin"
+              isSubmitDisabled
+                ? "disabled-btn signin"
+                : "btn primary-button signin"
             }
             disabled={isSubmitDisabled}
           ></input>

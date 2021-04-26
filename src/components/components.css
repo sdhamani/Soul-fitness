@@ -61,6 +61,7 @@
   align-items: center;
   margin: 0rem 1rem;
 }
+
 .nav-username {
   color: var(--button-text-color);
   width: 6rem;
@@ -104,6 +105,9 @@
     left: 8rem;
     text-align: center;
     align-items: center;
+  }
+  .loggenin-Name .fa {
+    font-size: small;
   }
 }
 
@@ -860,7 +864,8 @@
 }
 
 .login-input-div {
-  margin: 0.5rem 1rem;
+  margin: 0.2rem 1rem;
+  margin-top: 0.5rem;
   width: 100%;
   text-align: center;
 }
@@ -897,6 +902,7 @@
 }
 
 .signin {
+  border: 1px solid var(--button-text-color);
   width: 80%;
   margin: 0.5rem;
 }
@@ -909,7 +915,12 @@
 }
 
 .input-check {
-  margin: 0.3rem;
+  width: 80%;
+  display: block;
+  text-align: left;
+  font-size: small;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
   color: gray;
 }
 

@@ -81,7 +81,7 @@ export default function Login() {
 
           <div className="login-input-div">
             <input
-              placeholder="Enter an emailID"
+              placeholder="Enter an email Id"
               className="login-input"
               onChange={(e) => setEmail(e.target.value)}
               type="email"
@@ -89,10 +89,8 @@ export default function Login() {
             ></input>
           </div>
           {emailError !== "" ? (
-            <p className="input-check">{emailError}</p>
-          ) : (
-            <p className="input-check">Success</p>
-          )}
+            <p className="input-check">*{emailError}</p>
+          ) : null}
           <div className="login-input-div">
             <input
               placeholder="EnterPassword"
@@ -102,24 +100,22 @@ export default function Login() {
               type="password"
             ></input>
           </div>
-          <div className="error-message-div">
-            {passwordError !== "" ? (
-              <p className="input-check">{passwordError}</p>
-            ) : (
-              <p className="input-check">Success</p>
-            )}
-          </div>
-          <div className="error-message-div">
-            {credentialsError !== "" ? (
-              <p className="input-check">{credentialsError}</p>
-            ) : null}
-          </div>
+
+          {passwordError !== "" ? (
+            <p className="input-check">*{passwordError}</p>
+          ) : null}
+
+          {credentialsError !== "" ? (
+            <p className="input-check">*{credentialsError}</p>
+          ) : null}
 
           <input
             type="submit"
             value="SIGN IN"
             className={
-              isSubmitDisabled ? "disabled-btn" : "btn primary-button signin"
+              isSubmitDisabled
+                ? "disabled-btn signin"
+                : "btn primary-button signin"
             }
             onClick={(e) => signInUser()}
             disabled={isSubmitDisabled}
