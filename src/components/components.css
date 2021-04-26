@@ -221,9 +221,9 @@
   height: 30%;
   color: var(--button-text-color);
   position: absolute;
-  top: 34%;
+  top: 38%;
   left: 60%;
-  background-color: black;
+  background-color: inherit;
   display: flex;
   justify-items: flex-end;
   flex-direction: column;
@@ -237,13 +237,11 @@
     top: 20%;
     opacity: 0;
     transform: scale(0.6);
-    /* transform: rotate(90deg); */
   }
   to {
-    top: 34%;
+    top: 38%;
     opacity: 1;
     transform: scale(1);
-    /* transform: rotate(1deg); */
   }
 }
 

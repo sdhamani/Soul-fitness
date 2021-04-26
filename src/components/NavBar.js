@@ -26,7 +26,10 @@ export default function Nav({ route, setRoute }) {
   return (
     <div>
       {hamDisplay && (
-        <div className="nav-cateogory-mob">
+        <div
+          onClick={(e) => setHamDisplay(!hamDisplay)}
+          className="nav-cateogory-mob"
+        >
           <NavLink to="/mens" activeClassName="nav-active">
             MEN
           </NavLink>
