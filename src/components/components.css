@@ -109,6 +109,19 @@
   .loggenin-Name .fa {
     font-size: small;
   }
+
+  .bar1,
+  .bar2,
+  .bar3 {
+    width: 1.5rem;
+    height: 0.25rem;
+  }
+  .container {
+    top: 1rem;
+  }
+  .change {
+    width: 2rem;
+  }
 }
 
 .nav-cateogory {

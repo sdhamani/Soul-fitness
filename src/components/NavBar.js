@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import useWishlist from "../context/wishlist-context";
 import { useState } from "react";
 import useLogin from "../context/login-context";
+import { Link } from "react-router-dom";
 
 export default function Nav({ route, setRoute }) {
   const { cart } = useCart();
@@ -42,15 +43,19 @@ export default function Nav({ route, setRoute }) {
         </div>
       )}
       <nav className="navigation nav-ecom">
-        <h1 className="nav-heading">Soul Fitness</h1>
+        <h1 className="nav-heading">
+          <Link className="login-actions-link" to="/">
+            Soul Fitness
+          </Link>
+        </h1>
         <div
-          class={hamDisplay ? "container change" : "container"}
+          className={hamDisplay ? "container change" : "container"}
           id="ham-container"
           onClick={() => myFunction()}
         >
-          <div class="bar1"></div>
-          <div class="bar2"></div>
-          <div class="bar3"></div>
+          <div className="bar1"></div>
+          <div className="bar2"></div>
+          <div className="bar3"></div>
         </div>
         <div className="nav-cateogory">
           <NavLink to="/mens" activeClassName="nav-active">
