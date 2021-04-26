@@ -221,7 +221,7 @@
   height: 30%;
   color: var(--button-text-color);
   position: absolute;
-  top: 40%;
+  top: 34%;
   left: 60%;
   background-color: black;
   display: flex;
@@ -229,7 +229,7 @@
   flex-direction: column;
   animation: landing-page 1s ease-in-out;
   transform: rotate(0deg);
-  border-radius: 4rem;
+  border-radius: 5rem;
 }
 
 @keyframes landing-page {
@@ -240,7 +240,7 @@
     /* transform: rotate(90deg); */
   }
   to {
-    top: 44%;
+    top: 34%;
     opacity: 1;
     transform: scale(1);
     /* transform: rotate(1deg); */
@@ -481,7 +481,7 @@
   height: 8%;
   color: var(--button-text-color);
   position: absolute;
-  bottom: 50%;
+  bottom: 52%;
   background-color: black;
   display: flex;
   flex-direction: row;
@@ -704,6 +704,7 @@
   /* card-btn */
   .card-overlay-data {
     display: flex;
+    /* bottom: 30%; */
   }
   /* cart */
   .cart-products {
