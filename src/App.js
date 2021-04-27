@@ -16,11 +16,24 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import { Navigate } from "react-router-dom";
 import PrivateRoute from "./Routes/PrivateRoute";
+import useData from "./context/data-context";
+import GetProducts from "./api/products-api";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [route, setRoute] = useState("landing");
+  const { data, setData } = useData();
+
+  // async function fecthproducts() {
+  //   const response = await GetProducts();
+  //   if (response.success) {
+  //     setData(response.products);
+  //   } else {
+  //     console.log(response.error);
+  //   }
+  // }
+  // fecthproducts();
 
   return (
     <div className="App">
