@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useLogin from "../context/login-context";
 import { useLocation, useNavigate } from "react-router-dom";
+import LoginUser from "../api/login-api";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -11,27 +12,22 @@ export default function Login() {
   const { state } = useLocation();
   const [passwordError, setPasswordError] = useState("");
   const [credentialsError, setCredentialsError] = useState("");
-  const { loggedIn, setloggedIn } = useLogin();
+  const { loggedIn, setloggedIn, setToken, setuserName } = useLogin();
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const navigate = useNavigate();
-  const userEmail = "test@gmail.com";
-  const userPassword = "Test@1234";
 
-  const signInUser = () => {
-    if (email === userEmail) {
-      if (password === userPassword) {
-        setloggedIn(true);
-        localStorage?.setItem(
-          "login",
-          JSON.stringify({ isUserLoggedIn: true })
-        );
-        navigate(state?.from ? state.from : "/");
-      } else {
-        setCredentialsError("Incorrect Password");
-        setloggedIn(false);
-      }
+  const signInUser = async () => {
+    console.log("In signinuser login.js");
+    const response = await LoginUser(email, password);
+    console.log("response", response);
+    if (response.success === true) {
+      setToken(response.token);
+      setloggedIn(true);
+      setuserName(response.userName);
+      localStorage?.setItem("login", JSON.stringify({ isUserLoggedIn: true }));
+      navigate(state?.from ? state.from : "/");
     } else {
-      setCredentialsError("Incorrect Email");
+      setCredentialsError(response);
       setloggedIn(false);
     }
   };

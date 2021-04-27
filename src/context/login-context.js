@@ -9,6 +9,9 @@ export default function useLogin() {
 
 export function LoginProvider({ children }) {
   const [loggedIn, setloggedIn] = useState(false);
+  const [token, setToken] = useState("");
+  const [userName, setuserName] = useState("");
+
   useEffect(() => {
     console.log("UE RAN");
     if (localStorage.getItem("login")) {
@@ -20,7 +23,14 @@ export function LoginProvider({ children }) {
 
   return (
     <LoginContainer.Provider
-      value={{ loggedIn: loggedIn, setloggedIn: setloggedIn }}
+      value={{
+        loggedIn: loggedIn,
+        setloggedIn: setloggedIn,
+        token: token,
+        setToken: setToken,
+        userName: userName,
+        setuserName: setuserName,
+      }}
     >
       {children}
     </LoginContainer.Provider>
