@@ -4,32 +4,48 @@ import { Link } from "react-router-dom";
 import useLogin from "../context/login-context";
 import { useLocation, useNavigate } from "react-router-dom";
 import LoginUser from "../api/login-api";
+import Getwishlist from "../api/wishlist-api";
+import Getcart from "../api/cart-api";
+import useCart from "../context/cart-context";
+import useWishlist from "../context/wishlist-context";
 
 export default function Login() {
+  const { wishlistdispatch } = useWishlist();
+  const { dispatch } = useCart();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const { state } = useLocation();
   const [passwordError, setPasswordError] = useState("");
   const [credentialsError, setCredentialsError] = useState("");
-  const { loggedIn, setloggedIn, setToken, setuserName } = useLogin();
+  const { setloggedIn, setToken, setuserName } = useLogin();
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+  const [showLoading, setshowLoading] = useState(false);
   const navigate = useNavigate();
 
+  const getCartAndWishlist = async (token) => {
+    const apicart = await Getcart(token);
+    await dispatch({ type: "USERCART", payload: apicart });
+    const apiwishlist = await Getwishlist(token);
+    console.log("apiwishlist", apiwishlist);
+    await wishlistdispatch({ type: "USERWISHLIST", payload: apiwishlist });
+    navigate(state?.from ? state.from : "/");
+  };
+
   const signInUser = async () => {
-    console.log("In signinuser login.js");
+    setshowLoading(true);
     const response = await LoginUser(email, password);
-    console.log("response", response);
     if (response.success === true) {
       setToken(response.token);
       setloggedIn(true);
       setuserName(response.userName);
       localStorage?.setItem("login", JSON.stringify({ isUserLoggedIn: true }));
-      navigate(state?.from ? state.from : "/");
+      getCartAndWishlist(response.token);
     } else {
       setCredentialsError(response);
       setloggedIn(false);
     }
+    setshowLoading(false);
   };
 
   useEffect(() => {
@@ -107,7 +123,7 @@ export default function Login() {
 
           <input
             type="submit"
-            value="SIGN IN"
+            value={showLoading ? "SIGNING IN" : "SIGN IN"}
             className={
               isSubmitDisabled
                 ? "disabled-btn signin"
