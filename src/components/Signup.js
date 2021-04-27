@@ -1,8 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import SignupUser from "../api/signup-api";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userName, setuserName] = useState("");
@@ -10,6 +13,50 @@ export default function Login() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+
+  const [showalert, setShowAlert] = useState(false);
+
+  const changeShowAlert = (text) => {
+    setShowAlert(text);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
+  };
+
+  function AlertComp() {
+    if (showalert === "Account has been created successfully.") {
+      return (
+        <div className="alert">
+          <h3 className="alert-success">
+            <i className="fa fa-check-circle" aria-hidden="true"></i>{" "}
+            {showalert}
+          </h3>
+        </div>
+      );
+    } else {
+      return (
+        <div class="alert">
+          <h3 class="alert-warning">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            {showalert}
+          </h3>
+        </div>
+      );
+    }
+  }
+
+  const createUser = async () => {
+    const response = await SignupUser(userName, email, password);
+    if (response === "Account has been created successfully.") {
+      changeShowAlert(response);
+
+      navigate("/login");
+    } else if (response.includes("duplicate")) {
+      changeShowAlert("User already exists");
+    } else {
+      changeShowAlert("User already exists");
+    }
+  };
 
   useEffect(() => {
     if (userName.length === 0) {
@@ -100,6 +147,7 @@ export default function Login() {
           <input
             type="submit"
             value="CREATE"
+            onClick={(e) => createUser()}
             className={
               isSubmitDisabled
                 ? "disabled-btn signin"
@@ -114,6 +162,7 @@ export default function Login() {
             </Link>
           </button>
         </div>
+        {showalert && <AlertComp />}
       </div>
     </div>
   );
