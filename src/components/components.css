@@ -32,6 +32,12 @@
 .card-lighter-data {
   font-weight: lighter;
 }
+
+.loading-products {
+  text-align: left;
+  margin: 2rem 2rem;
+  height: 72vh;
+}
 /* Navigation */
 
 .nav-ecom {
@@ -813,6 +819,8 @@
 
 /* footer */
 .footer {
+  /* position: inherit; */
+  /* bottom: 0; */
   height: 2rem;
   background-color: var(--button-text-color);
 }
