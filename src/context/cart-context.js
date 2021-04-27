@@ -1,6 +1,9 @@
-import { createContext, useContext, useReducer, useEffect } from "react";
-import products from "../data/products";
+import { createContext, useContext, useReducer, useState } from "react";
+import { AddToCart } from "../api/cart-api";
+
 import useData from "./data-context";
+import useLogin from "./login-context";
+
 const CartContainer = createContext();
 
 export default function useCart() {
@@ -8,23 +11,29 @@ export default function useCart() {
 }
 
 export function CartProvider({ children }) {
+  const { token } = useLogin();
+  const [initalcart, setInitialCart] = useState([]);
   const { data, setData } = useData();
+
+  const addtocart = async (token, productid) => {
+    const response = await AddToCart(token, productid);
+    if (response.success) {
+      return { success: true, updatedCart: response.updatedCart };
+    } else {
+      return { success: false, message: response.message };
+    }
+  };
+
   const dispatchFunc = (state, value) => {
     const obj = value.payload;
+    console.log({ obj });
     switch (value.type) {
+      case "USERCART":
+        return value.payload;
       case "ADDTOCART":
-        console.log("CaseATC");
-        if (!value.payload.addedToCart) {
-          return [
-            ...state,
-            {
-              id: obj.id,
-              name: obj.name,
-              quantity: 1,
-              price: obj.price,
-              image: obj.image,
-            },
-          ];
+        const response = addtocart(token, obj._id);
+        if (response.success) {
+          return (state = response.updatedCart);
         } else {
           return state;
         }
@@ -69,21 +78,14 @@ export function CartProvider({ children }) {
     }
   };
 
-  const intialState = localStorage.getItem("cart-items")
-    ? JSON.parse(localStorage.getItem("cart-items"))
-    : [];
-
-  const [cart, dispatch] = useReducer(dispatchFunc, intialState);
-
-  useEffect(() => {
-    localStorage.setItem("cart-items", JSON.stringify(cart));
-  }, [cart]);
+  const [cart, dispatch] = useReducer(dispatchFunc, initalcart);
 
   return (
     <CartContainer.Provider
       value={{
         cart: cart,
         dispatch: dispatch,
+        setInitialCart: setInitialCart,
       }}
     >
       {" "}

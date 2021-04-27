@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 import { useReducer } from "react";
-import products from "../data/products";
+
 import useData from "../context/data-context";
 
 const ProductContainer = createContext();
