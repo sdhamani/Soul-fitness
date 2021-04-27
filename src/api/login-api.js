@@ -13,7 +13,6 @@ export default async function LoginUser(emailId, password) {
     if (loginObj.data.success) {
       return loginObj.data;
     } else {
-      console.log("else", loginObj.data.message);
       return loginObj.data.message;
     }
   } catch (error) {
