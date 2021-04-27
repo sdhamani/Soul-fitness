@@ -1,10 +1,9 @@
 import React from "react";
 import { Route, Navigate } from "react-router-dom";
 import useLogin from "../context/login-context";
-import { useEffect } from "react";
 
 function PrivateRoute({ path, ...props }) {
-  const { loggedIn, setloggedIn } = useLogin();
+  const { loggedIn } = useLogin();
   console.log("loggedIn in private route", loggedIn);
   return loggedIn ? (
     <Route {...props} path={path} />
