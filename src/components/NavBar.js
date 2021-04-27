@@ -11,7 +11,7 @@ export default function Nav({ route, setRoute }) {
   const { wishlist } = useWishlist();
   const [hamDisplay, setHamDisplay] = useState(false);
   const [logoutBtn, setlogoutBtn] = useState(true);
-  const { loggedIn, setloggedIn } = useLogin();
+  const { loggedIn, setloggedIn, userName } = useLogin();
   const navigate = useNavigate();
 
   function myFunction() {
@@ -74,7 +74,7 @@ export default function Nav({ route, setRoute }) {
               className="loggenin-Name"
               onClick={(e) => setlogoutBtn(!logoutBtn)}
             >
-              <div className="nav-username">Hi Sagar !</div>
+              <div className="nav-username">Hi {userName} !</div>
               <div className="badge-div">
                 <i
                   class="fa fa-user-circle fa-lg badge-icons logged-in-user"
