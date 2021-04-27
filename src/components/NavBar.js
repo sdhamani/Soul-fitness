@@ -20,6 +20,7 @@ export default function Nav({ route, setRoute }) {
   }
 
   function logoutFun() {
+    setlogoutBtn(true);
     setloggedIn(false);
     localStorage?.setItem("login", JSON.stringify({ isUserLoggedIn: false }));
     navigate("/");
