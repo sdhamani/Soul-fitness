@@ -13,6 +13,7 @@ export default function Login() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+  const [showLoading, setshowLoading] = useState(false);
 
   const [showalert, setShowAlert] = useState(false);
 
@@ -46,6 +47,7 @@ export default function Login() {
   }
 
   const createUser = async () => {
+    setshowLoading(true);
     const response = await SignupUser(userName, email, password);
     if (response === "Account has been created successfully.") {
       changeShowAlert(response);
@@ -56,6 +58,7 @@ export default function Login() {
     } else {
       changeShowAlert("User already exists");
     }
+    setshowLoading(false);
   };
 
   useEffect(() => {
@@ -146,7 +149,7 @@ export default function Login() {
 
           <input
             type="submit"
-            value="CREATE"
+            value={showLoading ? "CREATING" : "CREATE "}
             onClick={(e) => createUser()}
             className={
               isSubmitDisabled
