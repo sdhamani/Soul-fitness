@@ -1,0 +1,22 @@
+import axios from "axios";
+
+export default async function LoginUser(emailId, password) {
+  const url = "http://localhost:3000/user/login";
+  try {
+    const userObj = {
+      email: emailId,
+      password: password,
+    };
+
+    const loginObj = await axios.post(url, userObj);
+
+    if (loginObj.data.success) {
+      return loginObj.data;
+    } else {
+      console.log("else", loginObj.data.message);
+      return loginObj.data.message;
+    }
+  } catch (error) {
+    console.log("error while signing user", error);
+  }
+}
