@@ -1,10 +1,23 @@
-import Card from "./Card";
 import FeatureProducts from "./FeatureProducts";
-import products from "../data/products";
-
+import { useEffect } from "react";
+import GetProducts from "../api/products-api";
 import { Link } from "react-router-dom";
+import useData from "../context/data-context";
 
 export default function Landing() {
+  const { data, setData } = useData();
+  useEffect(() => {
+    async function fecthproducts() {
+      const response = await GetProducts();
+      if (response.success) {
+        setData(response.products);
+      } else {
+        console.log(response.data.message);
+      }
+    }
+    fecthproducts();
+  }, []);
+
   return (
     <div className="landing-page">
       <div className="text-overlay">
@@ -50,9 +63,11 @@ export default function Landing() {
         </div>
       </div>
       <div className="landing-best-products">
-        <p className="landing-best-products-h1">The Best Products Of Catalan</p>
+        <p className="landing-best-products-h1">
+          The Best Products Of Soul Fitness
+        </p>
         <p className="landing-best-products-h2">FEATURE PRODUCTS</p>
-        <FeatureProducts products={products.slice(1, 7)} />
+        <FeatureProducts products={data.slice(1, 7)} />
       </div>
     </div>
   );
