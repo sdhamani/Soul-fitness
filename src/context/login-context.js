@@ -1,6 +1,9 @@
 import { createContext, useContext } from "react";
 import { useState, useEffect } from "react";
-
+import Getwishlist from "../api/wishlist-api";
+import Getcart from "../api/cart-api";
+import useCart from "../context/cart-context";
+import useWishlist from "../context/wishlist-context";
 const LoginContainer = createContext();
 
 export default function useLogin() {
@@ -8,16 +11,26 @@ export default function useLogin() {
 }
 
 export function LoginProvider({ children }) {
+  // const { localUserName } = JSON.parse(localStorage?.getItem("localUserName"));
+
   const [loggedIn, setloggedIn] = useState(false);
   const [token, setToken] = useState("");
   const [userName, setuserName] = useState("");
 
   useEffect(() => {
-    console.log("UE RAN");
+    console.log("running login ue");
     if (localStorage.getItem("login")) {
-      console.log("Inside LS");
       const { isUserLoggedIn } = JSON.parse(localStorage?.getItem("login"));
+      const Usertoken = JSON.parse(localStorage?.getItem("token"));
       isUserLoggedIn && setloggedIn(true);
+      setToken(Usertoken.token);
+    }
+    if (localStorage?.getItem("localUserName")) {
+      const { localUserName } = JSON.parse(
+        localStorage?.getItem("localUserName")
+      );
+      console.log("localUserName", localUserName);
+      setuserName(localUserName);
     }
   }, []);
 
