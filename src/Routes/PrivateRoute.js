@@ -3,9 +3,14 @@ import { Route, Navigate } from "react-router-dom";
 import useLogin from "../context/login-context";
 
 function PrivateRoute({ path, ...props }) {
-  const { loggedIn } = useLogin();
-  console.log("loggedIn in private route", loggedIn);
-  return loggedIn ? (
+  // const { loggedIn } = useLogin();
+  let isUserLoggedIn = false;
+  if (localStorage.getItem("login")) {
+    isUserLoggedIn = JSON.parse(localStorage?.getItem("login"));
+  }
+
+  console.log("loggedIn in private route", isUserLoggedIn);
+  return isUserLoggedIn ? (
     <Route {...props} path={path} />
   ) : (
     <Navigate state={{ from: path }} replace to="/login" />
