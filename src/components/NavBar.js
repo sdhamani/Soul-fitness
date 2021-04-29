@@ -2,20 +2,20 @@ import "./components.css";
 import useCart from "../context/cart-context";
 import { NavLink, useNavigate } from "react-router-dom";
 import useWishlist from "../context/wishlist-context";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useLogin from "../context/login-context";
 import { Link } from "react-router-dom";
 
 export default function Nav({ route, setRoute }) {
-  const { cart } = useCart();
-  const { wishlist } = useWishlist();
+  const { cart, dispatch } = useCart();
+  const { wishlist, wishlistdispatch } = useWishlist();
   const [hamDisplay, setHamDisplay] = useState(false);
   const [logoutBtn, setlogoutBtn] = useState(true);
   const { loggedIn, setloggedIn, userName } = useLogin();
+
   const navigate = useNavigate();
 
   function myFunction() {
-    console.log("hamfun", hamDisplay);
     setHamDisplay(!hamDisplay);
   }
 
@@ -23,7 +23,14 @@ export default function Nav({ route, setRoute }) {
     setlogoutBtn(true);
     setloggedIn(false);
     localStorage?.setItem("login", JSON.stringify({ isUserLoggedIn: false }));
+    localStorage?.setItem(
+      "localUserName",
+      JSON.stringify({ localUserName: "" })
+    );
+    localStorage?.setItem("token", JSON.stringify({ token: "" }));
     navigate("/");
+    dispatch({ type: "USERCART", payload: [] });
+    wishlistdispatch({ type: "USERWISHLIST", payload: [] });
   }
   return (
     <div>
