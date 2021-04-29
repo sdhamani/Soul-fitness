@@ -3,7 +3,14 @@ import { useState } from "react";
 import useCart from "../context/cart-context";
 import useData from "../context/data-context";
 import useWishlist from "../context/wishlist-context";
+import useLogin from "../context/login-context";
+import { AddToCartAPI } from "../api/cart-api";
+import { ToggleWishlistAPI } from "../api/wishlist-api";
+import { useNavigate } from "react-router-dom";
+
 export default function Card({ products }) {
+  const navigate = useNavigate();
+  const { token, loggedIn } = useLogin();
   const { cart, dispatch } = useCart();
 
   const { data, setData } = useData();
@@ -19,48 +26,72 @@ export default function Card({ products }) {
     }, 2000);
   };
 
-  function AlertComp() {
-    if (showalert !== "Item successfully removed from the Wishlist !!!") {
-      return (
-        <div className="alert">
-          <h3 className="alert-success">
-            <i className="fa fa-check-circle" aria-hidden="true"></i>{" "}
-            {showalert}
-          </h3>
-        </div>
-      );
-    } else {
-      return (
-        <div class="alert">
-          <h3 class="alert-warning">
-            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-            {showalert}
-          </h3>
-        </div>
-      );
-    }
-  }
-
-  const addedToCart = (item) => {
-    const updatedData = data.map((value) =>
-      value.id === item.id ? { ...value, addedToCart: true } : value
-    );
-    setData(updatedData);
-    dispatch({ type: "ADDTOCART", payload: item });
-    changeShowAlert("Item successfully added to the Cart !!!");
+  const signinAlert = (text) => {
+    setShowAlert(text);
+    setTimeout(() => {
+      setShowAlert(false);
+      navigate("/login");
+    }, 2000);
   };
 
-  const updateWishlist = (item) => {
-    const updatedData = data.map((value) =>
-      value.id === item.id
-        ? { ...value, addedToWishlist: !value.addedToWishlist }
-        : value
+  function AlertComp() {
+    return (
+      <div class="alert">
+        <h3 class="alert-warning">
+          {/* <i class="fa fa-exclamation-circle" aria-hidden="true"></i> */}
+          {showalert}
+        </h3>
+      </div>
     );
-    setData(updatedData);
-    wishlistdispatch({ type: "UPDATEWISHLIST", payload: item });
-    item.addedToWishlist
-      ? changeShowAlert("Item successfully removed from the Wishlist !!!")
-      : changeShowAlert("Item successfully added to the Wishlist !!!");
+  }
+
+  const addedToCart = async (item) => {
+    console.log("addedToCart called");
+    try {
+      if (loggedIn) {
+        const response = await AddToCartAPI(token, item._id);
+
+        if (response.success) {
+          const updatedData = data.map((value) =>
+            value.id === item.id ? { ...value, addedToCart: true } : value
+          );
+          setData(updatedData);
+          changeShowAlert("Item successfully added to the Cart !!!");
+          dispatch({ type: "USERCART", payload: response.updatedCart });
+        } else {
+          changeShowAlert(response.message);
+        }
+      } else {
+        signinAlert("You need to sign it first");
+      }
+    } catch (err) {
+      changeShowAlert("Some error occurred");
+      console.log(err);
+    }
+  };
+
+  const updateWishlist = async (item) => {
+    try {
+      if (loggedIn) {
+        changeShowAlert("Trying to update wishlist ");
+        const response = await ToggleWishlistAPI(token, item._id);
+
+        if (response.success) {
+          changeShowAlert("Wishlist Updated successfully !!!");
+          wishlistdispatch({
+            type: "USERWISHLIST",
+            payload: response.Updatedwishlist,
+          });
+        } else {
+          changeShowAlert(response.message);
+        }
+      } else {
+        signinAlert("You need to sign it first");
+      }
+    } catch (err) {
+      changeShowAlert("Some error occurred");
+      console.log(err);
+    }
   };
 
   return (
@@ -79,9 +110,12 @@ export default function Card({ products }) {
                   <button
                     className="cart-image"
                     onClick={(e) => addedToCart(item)}
-                    disabled={item.addedToCart}
+                    // disabled={item.addedToCart}
                   >
-                    {item.addedToCart ? (
+                    {cart.length > 0 &&
+                    cart.find(
+                      (product) => product.productId._id === item._id
+                    ) ? (
                       <i
                         class="fa fa-check-circle fa-lg"
                         aria-hidden="true"
@@ -98,7 +132,10 @@ export default function Card({ products }) {
                     className="cart-image"
                     onClick={(e) => updateWishlist(item)}
                   >
-                    {item.addedToWishlist ? (
+                    {cart.length > 0 &&
+                    wishlist.find(
+                      (product) => product.productId._id === item._id
+                    ) ? (
                       <i
                         class="fa fa-heart red-heart fa-lg"
                         aria-hidden="true"
