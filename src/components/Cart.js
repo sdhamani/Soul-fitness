@@ -1,16 +1,53 @@
 import useCart from "../context/cart-context";
 import { Link } from "react-router-dom";
+import useLogin from "../context/login-context";
+import { UpdateCartQuantiyAPI, DeletFromCartAPI } from "../api/cart-api";
 
 export default function Cart() {
   const { cart, dispatch } = useCart();
+  const { token } = useLogin();
 
+  const deleteFromCart = async (item) => {
+    try {
+      const response = await DeletFromCartAPI(token, item.productId._id);
+      console.log({ response });
+      if (response.success) {
+        dispatch({ type: "USERCART", payload: response.updatedCart });
+      } else {
+        console.log("error occurred");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const updateQuanity = async (item, text) => {
+    try {
+      let quantity = item.quantity;
+      if (text === "ADD") {
+        quantity += 1;
+      } else if (text === "SUB") {
+        if (quantity > 1) {
+          quantity -= 1;
+        }
+      }
+      const response = await UpdateCartQuantiyAPI(
+        token,
+        item.productId._id,
+        quantity
+      );
+
+      if (response.success) {
+        dispatch({ type: "USERCART", payload: response.updatedCart });
+      } else {
+        console.log("error occurred");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const getTotalValue = (total, obj) => {
-    console.log("total", total);
-    console.log({ obj });
     return total + obj.quantity * obj.productId.price;
   };
-  console.log("Cart in cart", cart);
-  console.log("typeof cart", typeof cart);
   return (
     <div>
       {true && (
@@ -44,18 +81,14 @@ export default function Cart() {
                       <div className="horizontal-card-counter">
                         <button
                           className="counter-btn"
-                          onClick={(e) =>
-                            dispatch({ type: "ADDQUANTITY", payload: item })
-                          }
+                          onClick={(e) => updateQuanity(item, "ADD")}
                         >
                           <i className="fa fa-plus" aria-hidden="true"></i>
                         </button>
                         <p className="counter">{item.quantity} </p>
                         <button
                           className="counter-btn"
-                          onClick={(e) =>
-                            dispatch({ type: "SUBSQUANTITY", payload: item })
-                          }
+                          onClick={(e) => updateQuanity(item, "SUB")}
                         >
                           <i className="fa fa-minus" aria-hidden="true"></i>
                         </button>
@@ -66,9 +99,7 @@ export default function Cart() {
                       <div>
                         <button
                           className="cart-delete-image"
-                          onClick={(e) =>
-                            dispatch({ type: "DELFROMCART", payload: item })
-                          }
+                          onClick={(e) => deleteFromCart(item)}
                         >
                           <i
                             className="fa fa-trash fa-2x"
