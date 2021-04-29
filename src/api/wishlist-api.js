@@ -3,8 +3,6 @@ import axios from "axios";
 export default async function Getwishlist(token) {
   const url = "http://localhost:3000/wishlist";
 
-  // let token =
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDg4NTM4ZjZmMGJjOTExZDhlZDdjNGIiLCJpYXQiOjE2MTk1NTI0Mzd9.gEFTw_2rKd__YasshTW26caWYLrowyYycs3Xzsv3ICk";
   try {
     const config = {
       headers: {
@@ -22,5 +20,32 @@ export default async function Getwishlist(token) {
   } catch (error) {
     console.log("error while signing user", error);
     return error;
+  }
+}
+
+export async function ToggleWishlistAPI(token, productId) {
+  console.log("wishlist running in api", token);
+
+  const url = `http://localhost:3000/wishlist/${productId}`;
+  console.log(url);
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+    };
+    const wishlistObj = await axios.post(url, null, config);
+    console.log({ wishlistObj });
+    if (wishlistObj.data.success) {
+      return {
+        success: true,
+        Updatedwishlist: wishlistObj.data.Updatedwishlist,
+      };
+    } else {
+      return { success: false, message: wishlistObj.data.message };
+    }
+  } catch (error) {
+    return { success: false, error: error.message };
   }
 }
