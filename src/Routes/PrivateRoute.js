@@ -1,11 +1,10 @@
 import React from "react";
 import { Route, Navigate } from "react-router-dom";
 
-
 function PrivateRoute({ path, ...props }) {
   // const { loggedIn } = useLogin();
   let isUserLoggedIn = false;
-  if (localStorage.getItem("login")) {
+  if (localStorage?.getItem("login")) {
     isUserLoggedIn = JSON.parse(localStorage?.getItem("login"));
   }
 
