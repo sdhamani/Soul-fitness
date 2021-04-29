@@ -119,7 +119,7 @@ export default function Login() {
             ></input>
           </div>
           {userNameError !== "" ? (
-            <p className="input-check">{userNameError}</p>
+            <p className="input-check">* {userNameError}</p>
           ) : null}
           <div className="login-input-div">
             <input
@@ -131,12 +131,12 @@ export default function Login() {
             ></input>
           </div>
           {emailError !== "" ? (
-            <p className="input-check">{emailError}</p>
+            <p className="input-check">* {emailError}</p>
           ) : null}
           <div className="login-input-div">
             <input
               className="login-input"
-              placeholder="Enter passowrd"
+              placeholder="Enter Password"
               pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$"
               onChange={(e) => setPassword(e.target.value)}
               type="password"
@@ -144,7 +144,7 @@ export default function Login() {
           </div>
 
           {passwordError !== "" ? (
-            <p className="input-check">{passwordError}</p>
+            <p className="input-check">* {passwordError}</p>
           ) : null}
 
           <input

@@ -11,8 +11,6 @@ export default function useLogin() {
 }
 
 export function LoginProvider({ children }) {
-  // const { localUserName } = JSON.parse(localStorage?.getItem("localUserName"));
-
   const [loggedIn, setloggedIn] = useState(false);
   const [token, setToken] = useState("");
   const [userName, setuserName] = useState("");

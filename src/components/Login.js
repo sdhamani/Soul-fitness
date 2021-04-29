@@ -112,7 +112,7 @@ export default function Login() {
           ) : null}
           <div className="login-input-div">
             <input
-              placeholder="EnterPassword"
+              placeholder="Enter Password"
               className="login-input"
               pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$"
               onChange={(e) => setPassword(e.target.value)}
