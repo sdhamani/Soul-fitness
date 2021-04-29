@@ -25,15 +25,15 @@ export function CartProvider({ children }) {
   const { userName, setuserName } = useLogin();
 
   useEffect(() => {
-    const { token } = JSON.parse(localStorage?.getItem("token"));
-    const getCartAndWishlist = async () => {
+    const getCartAndWishlist = async (token) => {
       const apicart = await Getcart(token);
       dispatch({ type: "USERCART", payload: apicart });
       const apiwishlist = await Getwishlist(token);
       wishlistdispatch({ type: "USERWISHLIST", payload: apiwishlist });
     };
     if (JSON.parse(localStorage?.getItem("login"))) {
-      getCartAndWishlist();
+      const { token } = JSON.parse(localStorage?.getItem("token"));
+      getCartAndWishlist(token);
     }
   }, []);
 
