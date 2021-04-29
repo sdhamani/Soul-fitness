@@ -3,6 +3,9 @@ import { useEffect } from "react";
 import GetProducts from "../api/products-api";
 import { Link } from "react-router-dom";
 import useData from "../context/data-context";
+import CatalogMagic from "../loader/products-loader";
+import MobileSkeletonLoader from "../loader/products-mob-loader";
+import "./components.css";
 
 export default function Landing() {
   const { data, setData } = useData();
@@ -67,7 +70,18 @@ export default function Landing() {
           The Best Products Of Soul Fitness
         </p>
         <p className="landing-best-products-h2">FEATURE PRODUCTS</p>
-        <FeatureProducts products={data.slice(1, 7)} />
+        {data.length > 0 ? (
+          <FeatureProducts products={data.slice(1, 7)} />
+        ) : (
+          <>
+            <div className="desktop-skeleton">
+              <CatalogMagic />
+            </div>
+            <div className="mobile-skeleton">
+              <MobileSkeletonLoader />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

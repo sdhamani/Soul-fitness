@@ -990,3 +990,19 @@ input:invalid {
     width: 80%;
   }
 }
+
+/* loaders */
+
+.mobile-skeleton {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .cards-products .desktop-skeleton {
+    display: none;
+  }
+
+  .mobile-skeleton {
+    display: inherit;
+  }
+}

@@ -3,6 +3,9 @@ import Card from "./Card";
 import "./components.css";
 import useProducts from "../context/products-context";
 import { useState } from "react";
+import CatalogMagic from "../loader/products-loader";
+import MobileSkeletonLoader from "../loader/products-mob-loader";
+
 function MensProducts() {
   let { filteredArray, dispatch } = useProducts();
 
@@ -273,7 +276,18 @@ function MensProducts() {
         </div>
       )}
       <div className="cards-products">
-        <Card products={filteredArray} />
+        {filteredArray.length > 0 ? (
+          <Card products={filteredArray} />
+        ) : (
+          <>
+            <div className="desktop-skeleton">
+              <CatalogMagic />
+            </div>
+            <div className="mobile-skeleton">
+              <MobileSkeletonLoader />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
