@@ -7,6 +7,7 @@ import useLogin from "../context/login-context";
 import { AddToCartAPI } from "../api/cart-api";
 import { ToggleWishlistAPI } from "../api/wishlist-api";
 import { useNavigate } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
 
 export default function Card({ products }) {
   const navigate = useNavigate();
