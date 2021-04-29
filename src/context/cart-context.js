@@ -26,7 +26,6 @@ export function CartProvider({ children }) {
 
   useEffect(() => {
     const { token } = JSON.parse(localStorage?.getItem("token"));
-
     const getCartAndWishlist = async () => {
       const apicart = await Getcart(token);
       dispatch({ type: "USERCART", payload: apicart });
