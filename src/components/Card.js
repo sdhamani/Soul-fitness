@@ -49,6 +49,7 @@ export default function Card({ products }) {
     console.log("addedToCart called");
     try {
       if (loggedIn) {
+        changeShowAlert("Trying to Add Product to the cart ");
         const response = await AddToCartAPI(token, item._id);
 
         if (response.success) {
