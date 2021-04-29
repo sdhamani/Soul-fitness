@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const products = require("./data/products");
 
-const PORT = 3000;
+// const PORT = 3000;
 const { Product } = require("./models/product.model");
 
 const initializeDBConnection = require("./db/db.connection");
@@ -46,6 +46,7 @@ app.use("*", function (req, res) {
   res.status(400).json("Page Not Found");
 });
 
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log("server started");
 });
