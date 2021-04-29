@@ -82,7 +82,7 @@ export default function Nav({ route, setRoute }) {
               className="loggenin-Name"
               onClick={(e) => setlogoutBtn(!logoutBtn)}
             >
-              <div className="nav-username">Hi {userName} !</div>
+              <div className="nav-username">Hi {userName}!</div>
               <div className="badge-div">
                 <i
                   class="fa fa-user-circle fa-lg badge-icons logged-in-user"

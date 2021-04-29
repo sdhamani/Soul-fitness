@@ -71,6 +71,7 @@
 .nav-username {
   color: var(--button-text-color);
   width: 6rem;
+  margin-right: 0.1rem;
   font-weight: 500;
   font-size: large;
   display: block;
