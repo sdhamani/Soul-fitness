@@ -4,7 +4,7 @@ import Cart from "./components/Cart";
 import Nav from "./components/NavBar";
 import LandingPage from "./components/LandingPage";
 import Products from "./components/Products";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Wishlist from "./components/Wishlist";
 import MensProducts from "./components/MensProducts";
 import Womensproducts from "./components/WomensProducts";
@@ -24,16 +24,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   const [route, setRoute] = useState("landing");
   const { data, setData } = useData();
-
-  // async function fecthproducts() {
-  //   const response = await GetProducts();
-  //   if (response.success) {
-  //     setData(response.products);
-  //   } else {
-  //     console.log(response.error);
-  //   }
-  // }
-  // fecthproducts();
 
   return (
     <div className="App">

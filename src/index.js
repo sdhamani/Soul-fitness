@@ -11,17 +11,17 @@ import { BrowserRouter as Router } from "react-router-dom";
 ReactDOM.render(
   <React.StrictMode>
     <LoginProvider>
-      <DataProvider>
-        <ProductProvider>
-          <CartProvider>
-            <WishlistProvider>
+      <WishlistProvider>
+        <CartProvider>
+          <DataProvider>
+            <ProductProvider>
               <Router>
                 <App />
               </Router>
-            </WishlistProvider>
-          </CartProvider>
-        </ProductProvider>
-      </DataProvider>
+            </ProductProvider>
+          </DataProvider>
+        </CartProvider>
+      </WishlistProvider>
     </LoginProvider>
   </React.StrictMode>,
   document.getElementById("root")
