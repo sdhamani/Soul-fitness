@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function UpdateCartQuantiyAPI(token, productId, quantity) {
   console.log("Update quantity running in api", token);
-  const url = `http://localhost:3000/cart/${productId}/${quantity}`;
+  const url = `https://mighty-brook-83661.herokuapp.com/cart/${productId}/${quantity}`;
   try {
     const config = {
       headers: {
@@ -24,7 +24,7 @@ export async function UpdateCartQuantiyAPI(token, productId, quantity) {
 
 export default async function Getcart(token) {
   console.log("Getting cart");
-  const url = "http://localhost:3000/cart";
+  const url = "https://mighty-brook-83661.herokuapp.com/cart";
   try {
     const config = {
       headers: {
@@ -48,7 +48,7 @@ export default async function Getcart(token) {
 
 export async function AddToCartAPI(token, productId) {
   console.log("ATC running in api", token);
-  const url = `http://localhost:3000/cart/${productId}`;
+  const url = `https://mighty-brook-83661.herokuapp.com/cart/${productId}`;
   try {
     const config = {
       headers: {
@@ -70,7 +70,7 @@ export async function AddToCartAPI(token, productId) {
 
 export async function DeletFromCartAPI(token, productId) {
   console.log("DFC running in api", token);
-  const url = `http://localhost:3000/cart/${productId}`;
+  const url = `https://mighty-brook-83661.herokuapp.com/cart/${productId}`;
   try {
     const config = {
       headers: {

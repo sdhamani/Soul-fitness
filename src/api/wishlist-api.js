@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default async function Getwishlist(token) {
-  const url = "http://localhost:3000/wishlist";
+  const url = "https://mighty-brook-83661.herokuapp.com/wishlist";
 
   try {
     const config = {
@@ -26,7 +26,7 @@ export default async function Getwishlist(token) {
 export async function ToggleWishlistAPI(token, productId) {
   console.log("wishlist running in api", token);
 
-  const url = `http://localhost:3000/wishlist/${productId}`;
+  const url = `https://mighty-brook-83661.herokuapp.com/wishlist/${productId}`;
   console.log(url);
   try {
     const config = {

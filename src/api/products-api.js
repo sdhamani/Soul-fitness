@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default async function GetProducts() {
-  const url = "http://localhost:3000/products";
+  const url = "https://mighty-brook-83661.herokuapp.com/products";
   try {
     const productsObj = await axios.get(url);
     if (productsObj.data.success) {

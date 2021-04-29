@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default async function LoginUser(emailId, password) {
-  const url = "http://localhost:3000/user/login";
+  const url = "https://mighty-brook-83661.herokuapp.com/user/login";
   try {
     const userObj = {
       email: emailId,
