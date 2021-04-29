@@ -1,5 +1,7 @@
 import { createContext, useContext } from "react";
 import { useReducer } from "react";
+import { useEffect } from "react";
+import GetProducts from "../api/products-api";
 
 import useData from "../context/data-context";
 
@@ -10,7 +12,6 @@ export default function useProducts() {
 }
 
 function dispatchfun(state, value) {
-  // console.log("Hello123", { value });
   console.log(state, value);
   switch (value.type) {
     case "SORT":
@@ -40,6 +41,18 @@ function dispatchfun(state, value) {
 
 export function ProductProvider({ children }) {
   const { data, setData } = useData();
+
+  useEffect(() => {
+    async function fecthproducts() {
+      const response = await GetProducts();
+      if (response.success) {
+        setData(response.products);
+      } else {
+        console.log(response.data.message);
+      }
+    }
+    fecthproducts();
+  }, []);
 
   const [
     { showAllProducts, showOnlyFastDelivery, sortBy, filterByCateogory },
