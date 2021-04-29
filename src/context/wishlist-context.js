@@ -14,7 +14,6 @@ export function WishlistProvider({ children }) {
       case "USERWISHLIST":
         console.log("USERWISHLIST");
         return value.payload;
-
       default:
         return state;
     }
