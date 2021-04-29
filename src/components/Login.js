@@ -25,10 +25,11 @@ export default function Login() {
 
   const getCartAndWishlist = async (token) => {
     const apicart = await Getcart(token);
-    await dispatch({ type: "USERCART", payload: apicart });
+    console.log({ apicart });
+    dispatch({ type: "USERCART", payload: apicart });
     const apiwishlist = await Getwishlist(token);
     console.log("apiwishlist", apiwishlist);
-    await wishlistdispatch({ type: "USERWISHLIST", payload: apiwishlist });
+    wishlistdispatch({ type: "USERWISHLIST", payload: apiwishlist });
     navigate(state?.from ? state.from : "/");
   };
 
@@ -39,7 +40,13 @@ export default function Login() {
       setToken(response.token);
       setloggedIn(true);
       setuserName(response.userName);
+      localStorage?.setItem("token", JSON.stringify({ token: response.token }));
       localStorage?.setItem("login", JSON.stringify({ isUserLoggedIn: true }));
+      localStorage?.setItem(
+        "localUserName",
+        JSON.stringify({ localUserName: response.userName })
+      );
+      // navigate(state?.from ? state.from : "/");
       getCartAndWishlist(response.token);
     } else {
       setCredentialsError(response);
