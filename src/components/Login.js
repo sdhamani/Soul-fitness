@@ -102,6 +102,7 @@ export default function Login() {
           ) : null}
           <div className="login-input-div">
             <input
+              id="login-password"
               placeholder="Enter Password"
               className="login-input"
               pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$"

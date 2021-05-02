@@ -962,6 +962,10 @@ input:invalid {
   background-color: var(--button-text-color);
 }
 
+input[id="login-password"]:focus:invalid {
+  background: white;
+}
+
 /* signup-page */
 
 .signup-div {
