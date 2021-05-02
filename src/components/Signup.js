@@ -14,6 +14,7 @@ export default function Login() {
   const [passwordError, setPasswordError] = useState("");
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [showLoading, setshowLoading] = useState(false);
+  const [showPassCriteria, setshowPassCriteria] = useState(false);
 
   const [showalert, setShowAlert] = useState(false);
 
@@ -87,15 +88,25 @@ export default function Login() {
     if (password.length === 0) {
       setPasswordError("This field is required");
     } else if (password.length < 5) {
-      setPasswordError("Passowrd should contain min 6 char");
+      setPasswordError(
+        "Passowrd should contain min 6 char, one UpperCase letter, one LowerCase letter, one number and one special character"
+      );
     } else if (password.search(/[A-Z]/) < 0) {
-      setPasswordError("Password should contain one UpperCase");
+      setPasswordError(
+        "Passowrd should contain min 6 char, one UpperCase letter, one LowerCase letter, one number and one special character"
+      );
     } else if (password.search(/[a-z]/) < 0) {
-      setPasswordError("Password should contain one LowerCase");
+      setPasswordError(
+        "Passowrd should contain min 6 char, one UpperCase letter, one LowerCase letter, one number and one special character"
+      );
     } else if (password.search(/[0-9]/) < 0) {
-      setPasswordError("Password should contain one number");
+      setPasswordError(
+        "Passowrd should contain min 6 char, one UpperCase letter, one LowerCase letter, one number and one special character"
+      );
     } else if (!special.test(password)) {
-      setPasswordError("Password should contain one special character");
+      setPasswordError(
+        "Passowrd should contain min 6 char, one UpperCase letter, one LowerCase letter, one number and one special character"
+      );
     } else {
       setPasswordError("");
     }
