@@ -15,8 +15,8 @@ export default function Wishlist() {
 
   function AlertComp() {
     return (
-      <div class="alert">
-        <h3 class="alert-warning">
+      <div className="alert">
+        <h3 className="alert-warning">
           <i className="fa fa-check-circle" aria-hidden="true"></i> {showalert}
         </h3>
       </div>
@@ -71,7 +71,7 @@ export default function Wishlist() {
                     onClick={(e) => updateWishlist(item.productId)}
                   >
                     <i
-                      class="fa fa-heart red-heart fa-lg"
+                      className="fa fa-heart red-heart fa-lg"
                       aria-hidden="true"
                     ></i>
                   </button>

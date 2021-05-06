@@ -37,9 +37,9 @@ export default function Card({ products }) {
 
   function AlertComp() {
     return (
-      <div class="alert">
-        <h3 class="alert-warning">
-          {/* <i class="fa fa-exclamation-circle" aria-hidden="true"></i> */}
+      <div className="alert">
+        <h3 className="alert-warning">
+          {/* <i className="fa fa-exclamation-circle" aria-hidden="true"></i> */}
           {showalert}
         </h3>
       </div>
@@ -119,7 +119,7 @@ export default function Card({ products }) {
                       (product) => product.productId._id === item._id
                     ) ? (
                       <i
-                        class="fa fa-check-circle fa-lg"
+                        className="fa fa-check-circle fa-lg"
                         aria-hidden="true"
                       ></i>
                     ) : (
@@ -139,11 +139,11 @@ export default function Card({ products }) {
                       (product) => product.productId._id === item._id
                     ) ? (
                       <i
-                        class="fa fa-heart red-heart fa-lg"
+                        className="fa fa-heart red-heart fa-lg"
                         aria-hidden="true"
                       ></i>
                     ) : (
-                      <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
+                      <i className="fa fa-heart-o fa-lg" aria-hidden="true"></i>
                     )}
                   </button>
                 </div>

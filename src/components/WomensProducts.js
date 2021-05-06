@@ -152,10 +152,10 @@ function WomensProducts() {
           <h4 className="actions-heading">
             SORT BY
             <button
-              class="mobile-action-close"
+              className="mobile-action-close"
               onClick={(e) => setMobilesort(false)}
             >
-              <i class="fa fa-times" aria-hidden="true"></i>
+              <i className="fa fa-times" aria-hidden="true"></i>
             </button>
           </h4>
           <div className="actions-types">
@@ -183,10 +183,10 @@ function WomensProducts() {
             <h4 className="actions-heading">
               FILTERS
               <button
-                class="mobile-action-close"
+                className="mobile-action-close"
                 onClick={(e) => setMobilesort(false)}
               >
-                <i class="fa fa-times" aria-hidden="true"></i>
+                <i className="fa fa-times" aria-hidden="true"></i>
               </button>
             </h4>
             <div className="actions-types">
