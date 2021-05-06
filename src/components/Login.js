@@ -72,16 +72,6 @@ export default function Login() {
     let special = /[\W]{1,}/;
     if (password.length === 0) {
       setPasswordError("This field is required");
-    } else if (password.length < 5) {
-      setPasswordError("Passowrd should contain min 6 char");
-    } else if (password.search(/[A-Z]/) < 0) {
-      setPasswordError("Password should contain one UpperCase");
-    } else if (password.search(/[a-z]/) < 0) {
-      setPasswordError("Password should contain one LowerCase");
-    } else if (password.search(/[0-9]/) < 0) {
-      setPasswordError("Password should contain one number");
-    } else if (!special.test(password)) {
-      setPasswordError("Password should contain one special character");
     } else {
       setPasswordError("");
     }
@@ -112,6 +102,7 @@ export default function Login() {
           ) : null}
           <div className="login-input-div">
             <input
+              id="login-password"
               placeholder="Enter Password"
               className="login-input"
               pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$"

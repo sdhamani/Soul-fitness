@@ -4,6 +4,7 @@
   --secondary-color: #00cacd;
   --action-bar-color: grey;
   --button-text-color: white;
+  --grey-color: grey;
 }
 
 /* Card components */
@@ -959,6 +960,10 @@ input:invalid {
 
   background-size: 25px;
   background-color: var(--button-text-color);
+}
+
+input[id="login-password"]:focus:invalid {
+  background: white;
 }
 
 /* signup-page */
