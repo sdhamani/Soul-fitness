@@ -25,10 +25,10 @@ export default function Login() {
 
   const getCartAndWishlist = async (token) => {
     const apicart = await Getcart(token);
-    console.log({ apicart });
+   
     dispatch({ type: "USERCART", payload: apicart });
     const apiwishlist = await Getwishlist(token);
-    console.log("apiwishlist", apiwishlist);
+ 
     wishlistdispatch({ type: "USERWISHLIST", payload: apiwishlist });
     navigate(state?.from ? state.from : "/");
   };

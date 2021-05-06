@@ -9,17 +9,6 @@ import "./components.css";
 
 export default function Landing() {
   const { data, setData } = useData();
-  // useEffect(() => {
-  //   async function fecthproducts() {
-  //     const response = await GetProducts();
-  //     if (response.success) {
-  //       setData(response.products);
-  //     } else {
-  //       console.log(response.data.message);
-  //     }
-  //   }
-  //   fecthproducts();
-  // }, []);
 
   return (
     <div className="landing-page">

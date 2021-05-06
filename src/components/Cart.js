@@ -10,7 +10,7 @@ export default function Cart() {
   const deleteFromCart = async (item) => {
     try {
       const response = await DeletFromCartAPI(token, item.productId._id);
-      console.log({ response });
+
       if (response.success) {
         dispatch({ type: "USERCART", payload: response.updatedCart });
       } else {

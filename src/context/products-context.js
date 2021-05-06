@@ -12,7 +12,6 @@ export default function useProducts() {
 }
 
 function dispatchfun(state, value) {
-  console.log(state, value);
   switch (value.type) {
     case "SORT":
       return { ...state, sortBy: value.payload };
@@ -24,9 +23,6 @@ function dispatchfun(state, value) {
       }
     }
     case "FILTERCAT": {
-      // console.log("Cavalue", value.payload);
-      console.log("rrr", state.filterByCateogory);
-      // console.log(value.payload in state.filterByCateogory);
       return {
         ...state,
         filterByCateogory: state.filterByCateogory.includes(value.payload)
@@ -86,15 +82,12 @@ export function ProductProvider({ children }) {
   ) => {
     let fa = sortedArray;
     if (!showAllProducts) {
-      console.log("IS");
       fa = fa.filter((item) => item.inStock === "Instock");
     }
     if (showOnlyFastDelivery) {
-      console.log("FD");
       fa = fa.filter((item) => item.delivery === "Prime");
     }
     if (filterByCateogory.length !== 0) {
-      console.log("FMH", filterByCateogory);
       fa = fa.filter((item) => filterByCateogory.includes(item.cateogory));
     }
     return fa;

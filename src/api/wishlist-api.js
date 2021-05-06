@@ -24,10 +24,8 @@ export default async function Getwishlist(token) {
 }
 
 export async function ToggleWishlistAPI(token, productId) {
-  console.log("wishlist running in api", token);
-
   const url = `https://mighty-brook-83661.herokuapp.com/wishlist/${productId}`;
-  console.log(url);
+
   try {
     const config = {
       headers: {
@@ -36,7 +34,7 @@ export async function ToggleWishlistAPI(token, productId) {
       },
     };
     const wishlistObj = await axios.post(url, null, config);
-    console.log({ wishlistObj });
+
     if (wishlistObj.data.success) {
       return {
         success: true,

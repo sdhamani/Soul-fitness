@@ -47,7 +47,7 @@ export default function Card({ products }) {
   }
 
   const addedToCart = async (item) => {
-    console.log("addedToCart called");
+    
     try {
       if (loggedIn) {
         changeShowAlert("Product is getting added to the cart !!!");

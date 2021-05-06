@@ -9,10 +9,9 @@ export default function useWishlist() {
 export function WishlistProvider({ children }) {
   const dispatchFunc = (state, value) => {
     const obj = value.payload;
-    console.log({ obj });
+
     switch (value.type) {
       case "USERWISHLIST":
-        console.log("USERWISHLIST");
         return value.payload;
       default:
         return state;

@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export async function UpdateCartQuantiyAPI(token, productId, quantity) {
-  console.log("Update quantity running in api", token);
   const url = `https://mighty-brook-83661.herokuapp.com/cart/${productId}/${quantity}`;
   try {
     const config = {
@@ -11,7 +10,7 @@ export async function UpdateCartQuantiyAPI(token, productId, quantity) {
       },
     };
     const cartObj = await axios.post(url, null, config);
-    console.log({ cartObj });
+
     if (cartObj.data.success) {
       return { success: true, updatedCart: cartObj.data.Updatedcart };
     } else {
@@ -23,7 +22,6 @@ export async function UpdateCartQuantiyAPI(token, productId, quantity) {
 }
 
 export default async function Getcart(token) {
-  console.log("Getting cart");
   const url = "https://mighty-brook-83661.herokuapp.com/cart";
   try {
     const config = {
@@ -37,17 +35,14 @@ export default async function Getcart(token) {
     if (cartObj.data.success) {
       return cartObj.data.cart;
     } else {
-      console.log("else", cartObj.data.message);
       return cartObj.data.message;
     }
   } catch (error) {
-    console.log("error while signing user", error);
     return error;
   }
 }
 
 export async function AddToCartAPI(token, productId) {
-  console.log("ATC running in api", token);
   const url = `https://mighty-brook-83661.herokuapp.com/cart/${productId}`;
   try {
     const config = {
@@ -57,7 +52,7 @@ export async function AddToCartAPI(token, productId) {
       },
     };
     const cartObj = await axios.post(url, null, config);
-    console.log({ cartObj });
+
     if (cartObj.data.success) {
       return { success: true, updatedCart: cartObj.data.Updatedcart };
     } else {
@@ -69,7 +64,6 @@ export async function AddToCartAPI(token, productId) {
 }
 
 export async function DeletFromCartAPI(token, productId) {
-  console.log("DFC running in api", token);
   const url = `https://mighty-brook-83661.herokuapp.com/cart/${productId}`;
   try {
     const config = {
@@ -79,7 +73,7 @@ export async function DeletFromCartAPI(token, productId) {
       },
     };
     const cartObj = await axios.delete(url, config);
-    console.log({ cartObj });
+
     if (cartObj.data.success) {
       return { success: true, updatedCart: cartObj.data.Updatedcart };
     } else {
