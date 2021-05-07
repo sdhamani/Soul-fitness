@@ -47,7 +47,6 @@ export default function Card({ products }) {
   }
 
   const addedToCart = async (item) => {
-    
     try {
       if (loggedIn) {
         changeShowAlert("Product is getting added to the cart !!!");
@@ -112,7 +111,6 @@ export default function Card({ products }) {
                   <button
                     className="cart-image"
                     onClick={(e) => addedToCart(item)}
-                    // disabled={item.addedToCart}
                   >
                     {cart.length > 0 &&
                     cart.find(
