@@ -28,6 +28,8 @@ export default function Cart() {
       } else if (text === "SUB") {
         if (quantity > 1) {
           quantity -= 1;
+        } else {
+          deleteFromCart(item);
         }
       }
       const response = await UpdateCartQuantiyAPI(
