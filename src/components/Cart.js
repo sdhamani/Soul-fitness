@@ -1,13 +1,18 @@
 import useCart from "../context/cart-context";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import useLogin from "../context/login-context";
 import { UpdateCartQuantiyAPI, DeletFromCartAPI } from "../api/cart-api";
 
 export default function Cart() {
   const { cart, dispatch } = useCart();
   const { token } = useLogin();
+  const [loader, setloader] = useState(false);
+  const [buttonId, setButtonId] = useState(null);
 
-  const deleteFromCart = async (item) => {
+  const deleteFromCart = async (item, id) => {
+    setloader(true);
+    setButtonId(id);
     try {
       const response = await DeletFromCartAPI(token, item.productId._id);
 
@@ -19,8 +24,11 @@ export default function Cart() {
     } catch (err) {
       console.log(err);
     }
+    setloader(false);
   };
-  const updateQuanity = async (item, text) => {
+  const updateQuanity = async (item, text, id) => {
+    setloader(true);
+    setButtonId(id);
     try {
       let quantity = item.quantity;
       if (text === "ADD") {
@@ -46,6 +54,7 @@ export default function Cart() {
     } catch (err) {
       console.log(err);
     }
+    setloader(false);
   };
   const getTotalValue = (total, obj) => {
     return total + obj.quantity * obj.productId.price;
@@ -64,7 +73,7 @@ export default function Cart() {
                 </p>
               )}
               {cart &&
-                cart.map((item) => {
+                cart.map((item, index) => {
                   return (
                     <div className="horizontal-card horizontal-card-ecom">
                       <img
@@ -82,17 +91,27 @@ export default function Cart() {
                       </div>
                       <div className="horizontal-card-counter">
                         <button
+                          id={index}
                           className="counter-btn"
-                          onClick={(e) => updateQuanity(item, "ADD")}
+                          onClick={(e) => updateQuanity(item, "ADD", index + 1)}
                         >
-                          <i className="fa fa-plus" aria-hidden="true"></i>
+                          {loader && buttonId === index + 1 ? (
+                            <i class="fas fa-spinner fa-spin"></i>
+                          ) : (
+                            <i className="fa fa-plus" aria-hidden="true"></i>
+                          )}
                         </button>
                         <p className="counter">{item.quantity} </p>
                         <button
+                          id={index}
                           className="counter-btn"
-                          onClick={(e) => updateQuanity(item, "SUB")}
+                          onClick={(e) => updateQuanity(item, "SUB", index + 2)}
                         >
-                          <i className="fa fa-minus" aria-hidden="true"></i>
+                          {loader && buttonId === index + 2 ? (
+                            <i class="fas fa-spinner fa-spin"></i>
+                          ) : (
+                            <i className="fa fa-minus" aria-hidden="true"></i>
+                          )}
                         </button>
                       </div>
                       <div className="horizontal-card-total-price">
@@ -100,16 +119,20 @@ export default function Cart() {
                       </div>
                       <div>
                         <button
+                          id={index}
                           className="cart-delete-image"
-                          onClick={(e) => deleteFromCart(item)}
+                          onClick={(e) => deleteFromCart(item, index)}
                         >
-                          <i
-                            className="fa fa-trash fa-2x"
-                            aria-hidden="true"
-                          ></i>
+                          {loader && buttonId === index ? (
+                            <i class="fas fa-spinner fa-spin fa-2x"></i>
+                          ) : (
+                            <i
+                              class="fa fa-trash-o fa-2x"
+                              aria-hidden="true"
+                            ></i>
+                          )}
                         </button>
                       </div>
-                      {/* <hr></hr> */}
                     </div>
                   );
                 })}
