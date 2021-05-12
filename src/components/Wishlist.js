@@ -14,24 +14,13 @@ export default function Wishlist() {
   const [showalert, setShowAlert] = useState(false);
 
   function AlertComp() {
-    // if (showalert !== "Item successfully removed from the Wishlist !!!") {
-    //   return (
-    //     <div className="alert">
-    //       <h3 className="alert-success">
-    //         <i className="fa fa-check-circle" aria-hidden="true"></i>{" "}
-    //         {showalert}
-    //       </h3>
-    //     </div>
-    //   );
-    // } else {
     return (
-      <div class="alert">
-        <h3 class="alert-warning">
+      <div className="alert">
+        <h3 className="alert-warning">
           <i className="fa fa-check-circle" aria-hidden="true"></i> {showalert}
         </h3>
       </div>
     );
-    // }
   }
 
   const changeShowAlert = (text) => {
@@ -41,12 +30,10 @@ export default function Wishlist() {
     }, 2000);
   };
   const updateWishlist = async (item) => {
-    console.log("Updatedwired");
-    console.log(item._id);
     try {
       changeShowAlert("Trying to update wishlist ");
       const response = await ToggleWishlistAPI(token, item._id);
-      console.log("response", response);
+
       if (response.success) {
         changeShowAlert("Wishlist Updated successfully !!!");
         wishlistdispatch({
@@ -54,7 +41,6 @@ export default function Wishlist() {
           payload: response.Updatedwishlist,
         });
       } else {
-        console.log("Couldnt do it");
         changeShowAlert(response.message);
       }
     } catch (err) {
@@ -85,7 +71,7 @@ export default function Wishlist() {
                     onClick={(e) => updateWishlist(item.productId)}
                   >
                     <i
-                      class="fa fa-heart red-heart fa-lg"
+                      className="fa fa-heart red-heart fa-lg"
                       aria-hidden="true"
                     ></i>
                   </button>

@@ -41,7 +41,6 @@ export function CartProvider({ children }) {
     const obj = value.payload;
     switch (value.type) {
       case "USERCART":
-        console.log({ obj });
         return obj;
 
       default:

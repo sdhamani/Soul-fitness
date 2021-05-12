@@ -11,9 +11,9 @@ function AlertComponent({ showalert }) {
     );
   } else {
     return (
-      <div class="alert">
-        <h3 class="alert-warning">
-          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+      <div className="alert">
+        <h3 className="alert-warning">
+          <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
           {showalert}
         </h3>
       </div>

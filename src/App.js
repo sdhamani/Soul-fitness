@@ -10,6 +10,7 @@ import MensProducts from "./components/MensProducts";
 import Womensproducts from "./components/WomensProducts";
 import Footer from "./components/Footer";
 import Equipments from "./components/Equipments";
+import PageNotFound from "./components/PageNotFound";
 import React from "react";
 import ReactDOM from "react-dom";
 import Login from "./components/Login";
@@ -33,7 +34,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <PrivateRoute path="/wishlist" element={<Wishlist />} />
         <PrivateRoute path="/cart" element={<Cart />} />
-        <Route path="*" element={<LandingPage />} />
+        <Route path="*" element={<PageNotFound />} />
         <Route path="/mens" element={<MensProducts />} />
         <Route path="/womens" element={<Womensproducts />} />
         <Route path="/equipments" element={<Equipments />} />

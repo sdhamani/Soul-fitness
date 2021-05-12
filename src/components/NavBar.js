@@ -85,7 +85,7 @@ export default function Nav({ route, setRoute }) {
               <div className="nav-username">Hi {userName}!</div>
               <div className="badge-div">
                 <i
-                  class="fa fa-user-circle fa-lg badge-icons logged-in-user"
+                  className="fa fa-user-circle fa-lg badge-icons logged-in-user"
                   aria-hidden="true"
                 >
                   {" "}
@@ -108,7 +108,7 @@ export default function Nav({ route, setRoute }) {
             <NavLink to="/home" activeClassName="nav-active-icon">
               {" "}
               <div className="badge-div">
-                <i class="fa fa-home fa-lg badge-icons" aria-hidden="true"></i>{" "}
+                <i className="fa fa-home fa-lg badge-icons" aria-hidden="true"></i>{" "}
               </div>
             </NavLink>
           </li>
@@ -116,9 +116,9 @@ export default function Nav({ route, setRoute }) {
           <li className="list-item-inline">
             <NavLink to="/wishlist" activeClassName="nav-active-icon">
               <div className="badge-div">
-                <i class="fa fa-heart fa-lg badge-icons" aria-hidden="true">
+                <i className="fa fa-heart fa-lg badge-icons" aria-hidden="true">
                   {" "}
-                  <span class="badge-on-icon badge-on-icon-ecom">
+                  <span className="badge-on-icon badge-on-icon-ecom">
                     {wishlist.length > 0 && wishlist.length}
                   </span>
                 </i>
@@ -130,11 +130,11 @@ export default function Nav({ route, setRoute }) {
             <NavLink to="/cart" activeClassName="nav-active-icon">
               <div className="badge-div">
                 <i
-                  class="fa fa-shopping-cart fa-lg badge-icons"
+                  className="fa fa-shopping-cart fa-lg badge-icons"
                   aria-hidden="true"
                 >
                   {" "}
-                  <span class="badge-on-icon badge-on-icon-ecom">
+                  <span className="badge-on-icon badge-on-icon-ecom">
                     {cart.length > 0 && cart.length}
                   </span>
                 </i>
@@ -146,7 +146,7 @@ export default function Nav({ route, setRoute }) {
               <NavLink to="/login" activeClassName="nav-active-icon">
                 <div className="badge-div">
                   <i
-                    class="fa fa-user-circle fa-lg badge-icons"
+                    className="fa fa-user-circle fa-lg badge-icons"
                     aria-hidden="true"
                   >
                     {" "}

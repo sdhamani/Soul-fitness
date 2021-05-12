@@ -12,11 +12,17 @@ export default function useProducts() {
 }
 
 function dispatchfun(state, value) {
-  console.log(state, value);
   switch (value.type) {
     case "SORT":
       return { ...state, sortBy: value.payload };
     case "FILTER": {
+      if (value.payload === "") {
+        return {
+          ...state,
+          showAllProducts: true,
+          showOnlyFastDelivery: false,
+        };
+      }
       if (value.payload === "OOS") {
         return { ...state, showAllProducts: !state.showAllProducts };
       } else {
@@ -24,9 +30,13 @@ function dispatchfun(state, value) {
       }
     }
     case "FILTERCAT": {
-      // console.log("Cavalue", value.payload);
-      console.log("rrr", state.filterByCateogory);
-      // console.log(value.payload in state.filterByCateogory);
+      if (value.payload === "") {
+        console.log("Playload []");
+        return {
+          ...state,
+          filterByCateogory: [],
+        };
+      }
       return {
         ...state,
         filterByCateogory: state.filterByCateogory.includes(value.payload)
@@ -85,18 +95,19 @@ export function ProductProvider({ children }) {
     { showAllProducts, showOnlyFastDelivery, filterByCateogory }
   ) => {
     let fa = sortedArray;
+    console.log("FILTERING ", filterByCateogory);
+
     if (!showAllProducts) {
-      console.log("IS");
       fa = fa.filter((item) => item.inStock === "Instock");
     }
     if (showOnlyFastDelivery) {
-      console.log("FD");
       fa = fa.filter((item) => item.delivery === "Prime");
     }
     if (filterByCateogory.length !== 0) {
-      console.log("FMH", filterByCateogory);
+      console.log("FILTERING By CATEor", filterByCateogory);
       fa = fa.filter((item) => filterByCateogory.includes(item.cateogory));
     }
+    console.log(fa);
     return fa;
   };
 

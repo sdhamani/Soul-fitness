@@ -37,9 +37,9 @@ export default function Card({ products }) {
 
   function AlertComp() {
     return (
-      <div class="alert">
-        <h3 class="alert-warning">
-          {/* <i class="fa fa-exclamation-circle" aria-hidden="true"></i> */}
+      <div className="alert">
+        <h3 className="alert-warning">
+          {/* <i className="fa fa-exclamation-circle" aria-hidden="true"></i> */}
           {showalert}
         </h3>
       </div>
@@ -47,10 +47,9 @@ export default function Card({ products }) {
   }
 
   const addedToCart = async (item) => {
-    console.log("addedToCart called");
     try {
       if (loggedIn) {
-        changeShowAlert("Trying to Add Product to the cart ");
+        changeShowAlert("Product is getting added to the cart !!!");
         const response = await AddToCartAPI(token, item._id);
 
         if (response.success) {
@@ -75,7 +74,7 @@ export default function Card({ products }) {
   const updateWishlist = async (item) => {
     try {
       if (loggedIn) {
-        changeShowAlert("Trying to update wishlist ");
+        changeShowAlert("Product is getting updated in the wishlist !!!");
         const response = await ToggleWishlistAPI(token, item._id);
 
         if (response.success) {
@@ -112,14 +111,13 @@ export default function Card({ products }) {
                   <button
                     className="cart-image"
                     onClick={(e) => addedToCart(item)}
-                    // disabled={item.addedToCart}
                   >
                     {cart.length > 0 &&
                     cart.find(
                       (product) => product.productId._id === item._id
                     ) ? (
                       <i
-                        class="fa fa-check-circle fa-lg"
+                        className="fa fa-check-circle fa-lg"
                         aria-hidden="true"
                       ></i>
                     ) : (
@@ -139,11 +137,11 @@ export default function Card({ products }) {
                       (product) => product.productId._id === item._id
                     ) ? (
                       <i
-                        class="fa fa-heart red-heart fa-lg"
+                        className="fa fa-heart red-heart fa-lg"
                         aria-hidden="true"
                       ></i>
                     ) : (
-                      <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
+                      <i className="fa fa-heart-o fa-lg" aria-hidden="true"></i>
                     )}
                   </button>
                 </div>

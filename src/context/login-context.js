@@ -16,7 +16,6 @@ export function LoginProvider({ children }) {
   const [userName, setuserName] = useState("");
 
   useEffect(() => {
-    console.log("running login ue");
     if (localStorage.getItem("login")) {
       const { isUserLoggedIn } = JSON.parse(localStorage?.getItem("login"));
       const Usertoken = JSON.parse(localStorage?.getItem("token"));
@@ -27,7 +26,7 @@ export function LoginProvider({ children }) {
       const { localUserName } = JSON.parse(
         localStorage?.getItem("localUserName")
       );
-      console.log("localUserName", localUserName);
+
       setuserName(localUserName);
     }
   }, []);

@@ -2,7 +2,7 @@ import React from "react";
 import Card from "./Card";
 import "./components.css";
 import useProducts from "../context/products-context";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CatalogMagic from "../loader/products-loader";
 import MobileSkeletonLoader from "../loader/products-mob-loader";
 
@@ -12,6 +12,13 @@ function Equipments() {
   const [mobilesort, setMobilesort] = useState(false);
 
   filteredArray = filteredArray.filter((item) => item.idealFor === "All");
+
+  useEffect(() => {
+    return function cleanup() {
+      dispatch({ type: "FILTERCAT", payload: "" });
+      dispatch({ type: "FILTER", payload: "" });
+    };
+  }, []);
 
   return (
     <div className="products-flex">
@@ -143,10 +150,10 @@ function Equipments() {
           <h4 className="actions-heading">
             SORT BY
             <button
-              class="mobile-action-close"
+              className="mobile-action-close"
               onClick={(e) => setMobilesort(false)}
             >
-              <i class="fa fa-times" aria-hidden="true"></i>
+              <i className="fa fa-times" aria-hidden="true"></i>
             </button>
           </h4>
           <div className="actions-types">
@@ -174,10 +181,10 @@ function Equipments() {
             <h4 className="actions-heading">
               FILTERS
               <button
-                class="mobile-action-close"
+                className="mobile-action-close"
                 onClick={(e) => setMobilesort(false)}
               >
-                <i class="fa fa-times" aria-hidden="true"></i>
+                <i className="fa fa-times" aria-hidden="true"></i>
               </button>
             </h4>
             <div className="actions-types">

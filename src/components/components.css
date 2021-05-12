@@ -4,6 +4,7 @@
   --secondary-color: #00cacd;
   --action-bar-color: grey;
   --button-text-color: white;
+  --grey-color: grey;
 }
 
 /* Card components */
@@ -24,9 +25,10 @@
 
 .card-image-ecom {
   padding: 0.5rem 0.5rem;
-  width: 90%;
+  width: 100%;
   height: 12rem;
   text-align: left;
+  object-fit: contain;
 }
 
 .card-lighter-data {
@@ -380,6 +382,7 @@
 
 /* products-page */
 .products-flex {
+  min-height: 84vh;
   margin-top: 4rem;
 }
 
@@ -821,7 +824,7 @@
 /* footer */
 .footer {
   /* position: inherit; */
-  /* bottom: 0; */
+
   height: 2rem;
   background-color: var(--button-text-color);
 }
@@ -961,6 +964,10 @@ input:invalid {
   background-color: var(--button-text-color);
 }
 
+input[id="login-password"]:focus:invalid {
+  background: white;
+}
+
 /* signup-page */
 
 .signup-div {
@@ -1006,4 +1013,13 @@ input:invalid {
   .mobile-skeleton {
     display: inherit;
   }
+}
+
+.PageNotFound {
+  min-height: 80vh;
+  flex-direction: column;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
