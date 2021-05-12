@@ -16,6 +16,13 @@ function dispatchfun(state, value) {
     case "SORT":
       return { ...state, sortBy: value.payload };
     case "FILTER": {
+      if (value.payload === "") {
+        return {
+          ...state,
+          showAllProducts: true,
+          showOnlyFastDelivery: false,
+        };
+      }
       if (value.payload === "OOS") {
         return { ...state, showAllProducts: !state.showAllProducts };
       } else {
@@ -23,6 +30,13 @@ function dispatchfun(state, value) {
       }
     }
     case "FILTERCAT": {
+      if (value.payload === "") {
+        console.log("Playload []");
+        return {
+          ...state,
+          filterByCateogory: [],
+        };
+      }
       return {
         ...state,
         filterByCateogory: state.filterByCateogory.includes(value.payload)
@@ -81,6 +95,8 @@ export function ProductProvider({ children }) {
     { showAllProducts, showOnlyFastDelivery, filterByCateogory }
   ) => {
     let fa = sortedArray;
+    console.log("FILTERING ", filterByCateogory);
+
     if (!showAllProducts) {
       fa = fa.filter((item) => item.inStock === "Instock");
     }
@@ -88,8 +104,10 @@ export function ProductProvider({ children }) {
       fa = fa.filter((item) => item.delivery === "Prime");
     }
     if (filterByCateogory.length !== 0) {
+      console.log("FILTERING By CATEor", filterByCateogory);
       fa = fa.filter((item) => filterByCateogory.includes(item.cateogory));
     }
+    console.log(fa);
     return fa;
   };
 

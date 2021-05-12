@@ -2,7 +2,7 @@ import React from "react";
 import Card from "./Card";
 import "./components.css";
 import useProducts from "../context/products-context";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CatalogMagic from "../loader/products-loader";
 import MobileSkeletonLoader from "../loader/products-mob-loader";
 
@@ -12,6 +12,13 @@ function Equipments() {
   const [mobilesort, setMobilesort] = useState(false);
 
   filteredArray = filteredArray.filter((item) => item.idealFor === "All");
+
+  useEffect(() => {
+    return function cleanup() {
+      dispatch({ type: "FILTERCAT", payload: "" });
+      dispatch({ type: "FILTER", payload: "" });
+    };
+  }, []);
 
   return (
     <div className="products-flex">
