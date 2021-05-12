@@ -382,6 +382,7 @@
 
 /* products-page */
 .products-flex {
+  min-height: 84vh;
   margin-top: 4rem;
 }
 
@@ -1015,6 +1016,7 @@ input[id="login-password"]:focus:invalid {
 }
 
 .PageNotFound {
+  min-height: 80vh;
   flex-direction: column;
   margin-top: 5rem;
   display: flex;
