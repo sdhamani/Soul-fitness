@@ -823,7 +823,7 @@
 /* footer */
 .footer {
   /* position: inherit; */
-  /* bottom: 0; */
+
   height: 2rem;
   background-color: var(--button-text-color);
 }
@@ -1012,4 +1012,12 @@ input[id="login-password"]:focus:invalid {
   .mobile-skeleton {
     display: inherit;
   }
+}
+
+.PageNotFound {
+  flex-direction: column;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
