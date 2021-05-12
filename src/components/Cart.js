@@ -93,9 +93,11 @@ export default function Cart() {
                         <button
                           id={index}
                           className="counter-btn"
-                          onClick={(e) => updateQuanity(item, "ADD", index + 1)}
+                          onClick={(e) =>
+                            updateQuanity(item, "ADD", index + 10)
+                          }
                         >
-                          {loader && buttonId === index + 1 ? (
+                          {loader && buttonId === index + 10 ? (
                             <i class="fas fa-spinner fa-spin"></i>
                           ) : (
                             <i className="fa fa-plus" aria-hidden="true"></i>
@@ -105,9 +107,11 @@ export default function Cart() {
                         <button
                           id={index}
                           className="counter-btn"
-                          onClick={(e) => updateQuanity(item, "SUB", index + 2)}
+                          onClick={(e) =>
+                            updateQuanity(item, "SUB", index + 20)
+                          }
                         >
-                          {loader && buttonId === index + 2 ? (
+                          {loader && buttonId === index + 20 ? (
                             <i class="fas fa-spinner fa-spin"></i>
                           ) : (
                             <i className="fa fa-minus" aria-hidden="true"></i>
