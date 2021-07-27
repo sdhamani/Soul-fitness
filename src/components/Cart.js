@@ -75,7 +75,10 @@ export default function Cart() {
               {cart &&
                 cart.map((item, index) => {
                   return (
-                    <div className="horizontal-card horizontal-card-ecom">
+                    <div
+                      key={index}
+                      className="horizontal-card horizontal-card-ecom"
+                    >
                       <img
                         className="horizontal-card-image-ecom"
                         src={item.productId.image}

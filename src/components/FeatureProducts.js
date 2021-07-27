@@ -1,13 +1,11 @@
 import "./components.css";
 
-import useData from "../context/data-context";
-
 export default function FeatureProducts({ products }) {
   return (
     <div className="cards cards-ecom">
       {products.map((item) => {
         return (
-          <div className="card  card-ecom" key={item.id}>
+          <div className="card  card-ecom" key={item._id}>
             <img
               className="card-image text-overlay-image card-image-ecom"
               alt="NA"
