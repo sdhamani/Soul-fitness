@@ -866,7 +866,11 @@
   width: 30%;
   height: 45%;
 }
-
+.login-form,
+.signup-form {
+  width: 100%;
+  text-align: center;
+}
 .login-card {
   box-shadow: 0 3px 8px rgb(0 0 0 / 24%);
   border-radius: 1rem;
@@ -888,7 +892,7 @@
 }
 
 .login-input-div {
-  margin: 0.2rem 1rem;
+  margin: 0.2rem 0rem;
   margin-top: 0.5rem;
   width: 100%;
   text-align: center;
@@ -939,12 +943,21 @@
 }
 
 .input-check {
-  width: 80%;
-  display: block;
+  width: 100%;
   text-align: left;
+  display: block;
   font-size: small;
   margin-top: 0;
   margin-bottom: 0.5rem;
+  margin-left: 2.5rem;
+  color: gray;
+}
+
+.input-check-pass {
+  width: 80%;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: small;
   color: gray;
 }
 

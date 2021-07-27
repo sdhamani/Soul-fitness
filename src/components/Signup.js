@@ -62,57 +62,69 @@ export default function Login() {
   };
 
   useEffect(() => {
-    if (userName.length === 0) {
-      setuserNameError("This field is required");
-    } else if (userName.length < 3) {
-      setuserNameError("Enter atleast 3 letters");
+    if (userName !== "") {
+      if (userName.length === 0) {
+        setuserNameError("This field is required");
+      } else if (userName.length < 3) {
+        setuserNameError("Enter atleast 3 letters");
+      } else {
+        setuserNameError("");
+      }
     } else {
       setuserNameError("");
     }
   }, [userName]);
 
   useEffect(() => {
-    var re = /\S+@\S+\.\S\S+/;
-    if (email.length === 0) {
-      setEmailError("This field is required");
-    } else if (!re.test(email)) {
-      setEmailError("Not a valid email");
+    if (email !== "") {
+      var re = /\S+@\S+\.\S\S+/;
+      if (email.length === 0) {
+        setEmailError("This field is required");
+      } else if (!re.test(email)) {
+        setEmailError("Not a valid email");
+      } else {
+        setEmailError("");
+      }
     } else {
       setEmailError("");
     }
   }, [email]);
 
   useEffect(() => {
-    let special = /[\W]{1,}/;
-    if (password.length === 0) {
-      setPasswordError("This field is required");
-    } else if (password.length < 5) {
-      setPasswordError(
-        "Passowrd should contain min 6 char, one UpperCase letter, one LowerCase letter, one number and one special character"
-      );
-    } else if (password.search(/[A-Z]/) < 0) {
-      setPasswordError(
-        "Passowrd should contain min 6 char, one UpperCase letter, one LowerCase letter, one number and one special character"
-      );
-    } else if (password.search(/[a-z]/) < 0) {
-      setPasswordError(
-        "Passowrd should contain min 6 char, one UpperCase letter, one LowerCase letter, one number and one special character"
-      );
-    } else if (password.search(/[0-9]/) < 0) {
-      setPasswordError(
-        "Passowrd should contain min 6 char, one UpperCase letter, one LowerCase letter, one number and one special character"
-      );
-    } else if (!special.test(password)) {
-      setPasswordError(
-        "Passowrd should contain min 6 char, one UpperCase letter, one LowerCase letter, one number and one special character"
-      );
+    if (password !== "") {
+      let special = /[\W]{1,}/;
+      if (password.length === 0) {
+        setPasswordError("This field is required");
+      } else if (password.length < 5) {
+        setPasswordError(
+          "Passowrd should contain min 6 char, one UpperCase letter, one LowerCase letter, one number and one special character"
+        );
+      } else if (password.search(/[A-Z]/) < 0) {
+        setPasswordError(
+          "Passowrd should contain min 6 char, one UpperCase letter, one LowerCase letter, one number and one special character"
+        );
+      } else if (password.search(/[a-z]/) < 0) {
+        setPasswordError(
+          "Passowrd should contain min 6 char, one UpperCase letter, one LowerCase letter, one number and one special character"
+        );
+      } else if (password.search(/[0-9]/) < 0) {
+        setPasswordError(
+          "Passowrd should contain min 6 char, one UpperCase letter, one LowerCase letter, one number and one special character"
+        );
+      } else if (!special.test(password)) {
+        setPasswordError(
+          "Passowrd should contain min 6 char, one UpperCase letter, one LowerCase letter, one number and one special character"
+        );
+      } else {
+        setPasswordError("");
+      }
+      if (emailError === "" && passwordError === "" && userNameError === "") {
+        setIsSubmitDisabled(false);
+      } else {
+        setIsSubmitDisabled(true);
+      }
     } else {
       setPasswordError("");
-    }
-    if (emailError === "" && passwordError === "" && userNameError === "") {
-      setIsSubmitDisabled(false);
-    } else {
-      setIsSubmitDisabled(true);
     }
   }, [password, emailError, passwordError, userNameError]);
   return (
@@ -120,35 +132,40 @@ export default function Login() {
       <div className="signup-center-div">
         <div className="signup-card">
           <h1 className="login-account">Create Account</h1>
-
-          <div className="login-input-div">
-            <form>
+          <form
+            className="signup-form"
+            onSubmit={(event) => {
+              event.preventDefault();
+              return isSubmitDisabled ? null : createUser();
+            }}
+          >
+            <div className="login-input-div">
               <input
                 className="login-input"
                 onChange={(e) => setuserName(e.target.value)}
                 type="text"
                 placeholder="Enter Full Name"
               ></input>
-            </form>
-          </div>
-          {userNameError !== "" ? (
-            <p className="input-check">* {userNameError}</p>
-          ) : null}
-          <div className="login-input-div">
-            <input
-              className="login-input"
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-              placeholder="Enter an emailID"
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-              autoComplete="on"
-            ></input>
-          </div>
-          {emailError !== "" ? (
-            <p className="input-check">* {emailError}</p>
-          ) : null}
-          <div className="login-input-div">
-            <form>
+              {userNameError !== "" ? (
+                <p className="input-check">* {userNameError}</p>
+              ) : null}
+            </div>
+
+            <div className="login-input-div">
+              <input
+                className="login-input"
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                placeholder="Enter an emailID"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                autoComplete="on"
+              ></input>
+              {emailError !== "" ? (
+                <p className="input-check">* {emailError}</p>
+              ) : null}
+            </div>
+
+            <div className="login-input-div">
               <input
                 className="login-input"
                 placeholder="Enter Password"
@@ -157,30 +174,31 @@ export default function Login() {
                 type="password"
                 autoComplete="on"
               ></input>
-            </form>
-          </div>
+              {passwordError !== "" ? (
+                <p className="input-check input-check-pass">
+                  * {passwordError}
+                </p>
+              ) : null}
+            </div>
 
-          {passwordError !== "" ? (
-            <p className="input-check">* {passwordError}</p>
-          ) : null}
+            <input
+              type="submit"
+              value={showLoading ? "CREATING" : "CREATE "}
+              onClick={(e) => createUser()}
+              className={
+                isSubmitDisabled
+                  ? "disabled-btn signin"
+                  : "btn primary-button signin"
+              }
+              disabled={isSubmitDisabled}
+            ></input>
 
-          <input
-            type="submit"
-            value={showLoading ? "CREATING" : "CREATE "}
-            onClick={(e) => createUser()}
-            className={
-              isSubmitDisabled
-                ? "disabled-btn signin"
-                : "btn primary-button signin"
-            }
-            disabled={isSubmitDisabled}
-          ></input>
-
-          <button className="login-actions">
-            <Link className="login-actions-link" to="/login">
-              Have an account? Login
-            </Link>
-          </button>
+            <button className="login-actions">
+              <Link className="login-actions-link" to="/login">
+                Have an account? Login
+              </Link>
+            </button>
+          </form>
         </div>
         {showalert && <AlertComp />}
       </div>

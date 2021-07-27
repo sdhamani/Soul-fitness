@@ -56,29 +56,39 @@ export default function Login() {
   };
 
   useEffect(() => {
-    setCredentialsError("");
-    var re = /\S+@\S+\.\S\S+/;
-    if (email.length === 0) {
-      setEmailError("This field is required");
-    } else if (!re.test(email)) {
-      setEmailError("Not a valid email");
+    if (email !== "") {
+      setCredentialsError("");
+      var re = /\S+@\S+\.\S\S+/;
+      if (email.length === 0) {
+        setEmailError("This field is required");
+      } else if (!re.test(email)) {
+        setEmailError("Not a valid email");
+      } else {
+        setEmailError("");
+      }
     } else {
+      setIsSubmitDisabled(true);
       setEmailError("");
     }
   }, [email]);
 
   useEffect(() => {
-    setCredentialsError("");
+    if (password !== "") {
+      setCredentialsError("");
 
-    if (password.length === 0) {
-      setPasswordError("This field is required");
-    } else {
-      setPasswordError("");
-    }
-    if (emailError === "" && passwordError === "") {
-      setIsSubmitDisabled(false);
+      if (password.length === 0) {
+        setPasswordError("This field is required");
+      } else {
+        setPasswordError("");
+      }
+      if (emailError === "" && passwordError === "") {
+        setIsSubmitDisabled(false);
+      } else {
+        setIsSubmitDisabled(true);
+      }
     } else {
       setIsSubmitDisabled(true);
+      setPasswordError("");
     }
   }, [password, emailError, passwordError]);
 
@@ -87,59 +97,64 @@ export default function Login() {
       <div className="login-center-div">
         <div className="login-card">
           <h1 className="login-account">Login Account</h1>
+          <form
+            className="login-form"
+            onSubmit={(event) => {
+              event.preventDefault();
+              return isSubmitDisabled ? null : signInUser();
+            }}
+          >
+            <div className="login-input-div">
+              <input
+                placeholder="Enter an email Id"
+                className="login-input"
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                autoComplete="on"
+              ></input>
+              {emailError !== "" ? (
+                <p className="input-check ">*{emailError}</p>
+              ) : null}
+            </div>
 
-          <div className="login-input-div">
-            <input
-              placeholder="Enter an email Id"
-              className="login-input"
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-              autoComplete="on"
-            ></input>
-          </div>
-          {emailError !== "" ? (
-            <p className="input-check">*{emailError}</p>
-          ) : null}
-          <div className="login-input-div">
-            <form>
+            <div className="login-input-div">
               <input
                 id="login-password"
                 placeholder="Enter Password"
                 className="login-input"
-                pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$"
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 autoComplete="on"
               ></input>
-            </form>
-          </div>
+            </div>
 
-          {passwordError !== "" ? (
-            <p className="input-check">*{passwordError}</p>
-          ) : null}
+            {passwordError !== "" ? (
+              <p className="input-check">*{passwordError}</p>
+            ) : null}
 
-          {credentialsError !== "" ? (
-            <p className="input-check">*{credentialsError}</p>
-          ) : null}
+            {credentialsError !== "" ? (
+              <p className="input-check">*{credentialsError}</p>
+            ) : null}
 
-          <input
-            type="submit"
-            value={showLoading ? "SIGNING IN" : "SIGN IN"}
-            className={
-              isSubmitDisabled
-                ? "disabled-btn signin"
-                : "btn primary-button signin"
-            }
-            onClick={(e) => signInUser()}
-            disabled={isSubmitDisabled}
-          ></input>
+            <input
+              type="submit"
+              value={showLoading ? "SIGNING IN" : "SIGN IN"}
+              className={
+                isSubmitDisabled
+                  ? "disabled-btn signin"
+                  : "btn primary-button signin"
+              }
+              onClick={(e) => signInUser()}
+              disabled={isSubmitDisabled}
+            ></input>
 
-          <button className="login-actions">
-            <Link className="login-actions-link" to="/signup">
-              Don't have an account? Create an account
-            </Link>
-          </button>
+            <button className="login-actions">
+              <Link className="login-actions-link" to="/signup">
+                Don't have an account? Create an account
+              </Link>
+            </button>
+          </form>
         </div>
       </div>
     </div>
