@@ -14,7 +14,6 @@ export default function Login() {
   const [passwordError, setPasswordError] = useState("");
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [showLoading, setshowLoading] = useState(false);
-  const [showPassCriteria, setshowPassCriteria] = useState(false);
 
   const [showalert, setShowAlert] = useState(false);
 
@@ -121,13 +120,16 @@ export default function Login() {
       <div className="signup-center-div">
         <div className="signup-card">
           <h1 className="login-account">Create Account</h1>
+
           <div className="login-input-div">
-            <input
-              className="login-input"
-              onChange={(e) => setuserName(e.target.value)}
-              type="text"
-              placeholder="Enter Full Name"
-            ></input>
+            <form>
+              <input
+                className="login-input"
+                onChange={(e) => setuserName(e.target.value)}
+                type="text"
+                placeholder="Enter Full Name"
+              ></input>
+            </form>
           </div>
           {userNameError !== "" ? (
             <p className="input-check">* {userNameError}</p>
@@ -139,19 +141,23 @@ export default function Login() {
               type="email"
               placeholder="Enter an emailID"
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              autoComplete="on"
             ></input>
           </div>
           {emailError !== "" ? (
             <p className="input-check">* {emailError}</p>
           ) : null}
           <div className="login-input-div">
-            <input
-              className="login-input"
-              placeholder="Enter Password"
-              pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$"
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-            ></input>
+            <form>
+              <input
+                className="login-input"
+                placeholder="Enter Password"
+                pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$"
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                autoComplete="on"
+              ></input>
+            </form>
           </div>
 
           {passwordError !== "" ? (
