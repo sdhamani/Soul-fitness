@@ -33,6 +33,11 @@ export default function Login() {
     navigate(state?.from ? state.from : "/");
   };
 
+  const signInAsGuestUser = () => {
+    setEmail("guest@gmail.com");
+    setPassword("Guest@123");
+  };
+
   const signInUser = async () => {
     setshowLoading(true);
     const response = await LoginUser(email, password);
@@ -106,6 +111,7 @@ export default function Login() {
           >
             <div className="login-input-div">
               <input
+                value={email}
                 placeholder="Enter an email Id"
                 className="login-input"
                 onChange={(e) => setEmail(e.target.value)}
@@ -120,6 +126,7 @@ export default function Login() {
 
             <div className="login-input-div">
               <input
+                value={password}
                 id="login-password"
                 placeholder="Enter Password"
                 className="login-input"
@@ -136,6 +143,13 @@ export default function Login() {
             {credentialsError !== "" ? (
               <p className="input-check">*{credentialsError}</p>
             ) : null}
+
+            <input
+              type="button"
+              value={"SIGN IN AS GUEST USER"}
+              className={"btn primary-button signin"}
+              onClick={(e) => signInAsGuestUser()}
+            ></input>
 
             <input
               type="submit"
