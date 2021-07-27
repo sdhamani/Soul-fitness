@@ -22,12 +22,9 @@ export default function Nav({ route, setRoute }) {
   function logoutFun() {
     setlogoutBtn(true);
     setloggedIn(false);
-    localStorage?.setItem("login", JSON.stringify({ isUserLoggedIn: false }));
-    localStorage?.setItem(
-      "localUserName",
-      JSON.stringify({ localUserName: "" })
-    );
-    localStorage?.setItem("token", JSON.stringify({ token: "" }));
+    localStorage?.removeItem("login");
+    localStorage?.removeItem("localUserName");
+    localStorage?.removeItem("token");
     navigate("/");
     dispatch({ type: "USERCART", payload: [] });
     wishlistdispatch({ type: "USERWISHLIST", payload: [] });
