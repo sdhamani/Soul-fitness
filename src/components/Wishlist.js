@@ -1,7 +1,4 @@
-import Nav from "./NavBar";
-import Card from "./Card";
 import useWishlist from "../context/wishlist-context";
-import useData from "../context/data-context";
 import { ToggleWishlistAPI } from "../api/wishlist-api";
 import useLogin from "../context/login-context";
 import { useState } from "react";
@@ -9,7 +6,6 @@ import { useState } from "react";
 export default function Wishlist() {
   const { wishlist, wishlistdispatch } = useWishlist();
 
-  const { data, setData } = useData();
   const { token } = useLogin();
   const [showalert, setShowAlert] = useState(false);
 

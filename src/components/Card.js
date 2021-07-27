@@ -7,7 +7,6 @@ import useLogin from "../context/login-context";
 import { AddToCartAPI } from "../api/cart-api";
 import { ToggleWishlistAPI } from "../api/wishlist-api";
 import { useNavigate } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
 
 export default function Card({ products }) {
   const navigate = useNavigate();
@@ -38,10 +37,7 @@ export default function Card({ products }) {
   function AlertComp() {
     return (
       <div className="alert">
-        <h3 className="alert-warning">
-          {/* <i className="fa fa-exclamation-circle" aria-hidden="true"></i> */}
-          {showalert}
-        </h3>
+        <h3 className="alert-warning">{showalert}</h3>
       </div>
     );
   }
@@ -101,7 +97,7 @@ export default function Card({ products }) {
         {products ? (
           products.map((item) => {
             return (
-              <div className="card card-ecom" key={item.id}>
+              <div className="card card-ecom" key={item._id}>
                 <img
                   className="card-image text-overlay-image card-image-ecom"
                   alt="NA"

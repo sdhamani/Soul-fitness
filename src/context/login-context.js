@@ -1,9 +1,5 @@
 import { createContext, useContext } from "react";
 import { useState, useEffect } from "react";
-import Getwishlist from "../api/wishlist-api";
-import Getcart from "../api/cart-api";
-import useCart from "../context/cart-context";
-import useWishlist from "../context/wishlist-context";
 const LoginContainer = createContext();
 
 export default function useLogin() {

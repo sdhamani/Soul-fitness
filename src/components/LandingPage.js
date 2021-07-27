@@ -1,6 +1,5 @@
 import FeatureProducts from "./FeatureProducts";
-import { useEffect } from "react";
-import GetProducts from "../api/products-api";
+
 import { Link } from "react-router-dom";
 import useData from "../context/data-context";
 import CatalogMagic from "../loader/products-loader";
@@ -8,7 +7,7 @@ import MobileSkeletonLoader from "../loader/products-mob-loader";
 import "./components.css";
 
 export default function Landing() {
-  const { data, setData } = useData();
+  const { data } = useData();
 
   return (
     <div className="landing-page">

@@ -25,10 +25,10 @@ export default function Login() {
 
   const getCartAndWishlist = async (token) => {
     const apicart = await Getcart(token);
-   
+
     dispatch({ type: "USERCART", payload: apicart });
     const apiwishlist = await Getwishlist(token);
- 
+
     wishlistdispatch({ type: "USERWISHLIST", payload: apiwishlist });
     navigate(state?.from ? state.from : "/");
   };
@@ -46,13 +46,13 @@ export default function Login() {
         "localUserName",
         JSON.stringify({ localUserName: response.userName })
       );
-      // navigate(state?.from ? state.from : "/");
+
       getCartAndWishlist(response.token);
     } else {
       setCredentialsError(response);
       setloggedIn(false);
+      setshowLoading(false);
     }
-    // setshowLoading(false);
   };
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export default function Login() {
 
   useEffect(() => {
     setCredentialsError("");
-    let special = /[\W]{1,}/;
+
     if (password.length === 0) {
       setPasswordError("This field is required");
     } else {
@@ -95,20 +95,24 @@ export default function Login() {
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              autoComplete="on"
             ></input>
           </div>
           {emailError !== "" ? (
             <p className="input-check">*{emailError}</p>
           ) : null}
           <div className="login-input-div">
-            <input
-              id="login-password"
-              placeholder="Enter Password"
-              className="login-input"
-              pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$"
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-            ></input>
+            <form>
+              <input
+                id="login-password"
+                placeholder="Enter Password"
+                className="login-input"
+                pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$"
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                autoComplete="on"
+              ></input>
+            </form>
           </div>
 
           {passwordError !== "" ? (

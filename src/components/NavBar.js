@@ -2,7 +2,7 @@ import "./components.css";
 import useCart from "../context/cart-context";
 import { NavLink, useNavigate } from "react-router-dom";
 import useWishlist from "../context/wishlist-context";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import useLogin from "../context/login-context";
 import { Link } from "react-router-dom";
 
@@ -105,10 +105,13 @@ export default function Nav({ route, setRoute }) {
 
         <ul className="list-no-bullets nav-pills nav-list-ecom">
           <li className="list-item-inline">
-            <NavLink to="/home" activeClassName="nav-active-icon">
+            <NavLink to="/" activeClassName="nav-active-icon">
               {" "}
               <div className="badge-div">
-                <i className="fa fa-home fa-lg badge-icons" aria-hidden="true"></i>{" "}
+                <i
+                  className="fa fa-home fa-lg badge-icons"
+                  aria-hidden="true"
+                ></i>{" "}
               </div>
             </NavLink>
           </li>

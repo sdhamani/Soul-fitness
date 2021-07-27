@@ -5,10 +5,7 @@ import {
   useState,
   useEffect,
 } from "react";
-import { AddToCartAPI } from "../api/cart-api";
 
-import useData from "./data-context";
-import useLogin from "./login-context";
 import useWishlist from "./wishlist-context";
 import Getwishlist from "../api/wishlist-api";
 import Getcart from "../api/cart-api";
@@ -22,7 +19,6 @@ export default function useCart() {
 export function CartProvider({ children }) {
   const [initalcart, setInitialCart] = useState([]);
   const { wishlistdispatch } = useWishlist();
-  const { userName, setuserName } = useLogin();
 
   useEffect(() => {
     const getCartAndWishlist = async (token) => {
@@ -35,7 +31,7 @@ export function CartProvider({ children }) {
       const { token } = JSON.parse(localStorage?.getItem("token"));
       getCartAndWishlist(token);
     }
-  }, []);
+  }, [wishlistdispatch]);
 
   const dispatchFunc = (state, value) => {
     const obj = value.payload;

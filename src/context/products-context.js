@@ -31,7 +31,6 @@ function dispatchfun(state, value) {
     }
     case "FILTERCAT": {
       if (value.payload === "") {
-        console.log("Playload []");
         return {
           ...state,
           filterByCateogory: [],
@@ -62,7 +61,7 @@ export function ProductProvider({ children }) {
       }
     }
     fecthproducts();
-  }, []);
+  }, [setData]);
 
   const [
     { showAllProducts, showOnlyFastDelivery, sortBy, filterByCateogory },
@@ -95,7 +94,6 @@ export function ProductProvider({ children }) {
     { showAllProducts, showOnlyFastDelivery, filterByCateogory }
   ) => {
     let fa = sortedArray;
-    console.log("FILTERING ", filterByCateogory);
 
     if (!showAllProducts) {
       fa = fa.filter((item) => item.inStock === "Instock");
@@ -104,10 +102,9 @@ export function ProductProvider({ children }) {
       fa = fa.filter((item) => item.delivery === "Prime");
     }
     if (filterByCateogory.length !== 0) {
-      console.log("FILTERING By CATEor", filterByCateogory);
       fa = fa.filter((item) => filterByCateogory.includes(item.cateogory));
     }
-    console.log(fa);
+
     return fa;
   };
 

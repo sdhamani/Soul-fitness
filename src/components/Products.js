@@ -1,5 +1,5 @@
 import "./components.css";
-import Nav from "./NavBar";
+
 import Card from "./Card";
 import useProducts from "../context/products-context";
 import { useState } from "react";
