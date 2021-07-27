@@ -17,7 +17,7 @@ function WomensProducts() {
       dispatch({ type: "FILTERCAT", payload: "" });
       dispatch({ type: "FILTER", payload: "" });
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="products-flex">
@@ -73,7 +73,7 @@ function WomensProducts() {
                   }
                   name="Pants"
                 />
-                <label for="Pants">Pants</label>
+                <label htmlFor="Pants">Pants</label>
               </div>
               <div className="actions-types">
                 <input
@@ -83,7 +83,7 @@ function WomensProducts() {
                   }
                   name="Shoes"
                 />
-                <label for="Shoes">Shoes</label>
+                <label htmlFor="Shoes">Shoes</label>
               </div>
               <div className="actions-types">
                 <input
@@ -93,7 +93,7 @@ function WomensProducts() {
                   }
                   name="T Shirt"
                 />
-                <label for="T Shirt">T Shirt</label>
+                <label htmlFor="T Shirt">T Shirt</label>
               </div>
               <div className="actions-types">
                 <input
@@ -103,7 +103,7 @@ function WomensProducts() {
                   }
                   name="Top"
                 />
-                <label for="Top">Top</label>
+                <label htmlFor="Top">Top</label>
               </div>
               <div className="actions-types">
                 <input
@@ -113,7 +113,7 @@ function WomensProducts() {
                   }
                   name="Jacket"
                 />
-                <label for="Jacket">Jacket</label>
+                <label htmlFor="Jacket">Jacket</label>
               </div>
               <div className="actions-types">
                 <input
@@ -123,7 +123,7 @@ function WomensProducts() {
                   }
                   name="Shorts"
                 />
-                <label for="Shorts">Shorts</label>
+                <label htmlFor="Shorts">Shorts</label>
               </div>
               <div className="actions-types">
                 <input
@@ -133,7 +133,7 @@ function WomensProducts() {
                   }
                   name="Bra"
                 />
-                <label for="Bra">Bra</label>
+                <label htmlFor="Bra">Bra</label>
               </div>
             </div>
           </div>
@@ -225,7 +225,7 @@ function WomensProducts() {
                   }
                   name="Pants"
                 />
-                <label for="Pants">Pants</label>
+                <label htmlFor="Pants">Pants</label>
               </div>
               <div className="actions-types">
                 <input
@@ -235,7 +235,7 @@ function WomensProducts() {
                   }
                   name="Shoes"
                 />
-                <label for="Shoes">Shoes</label>
+                <label htmlFor="Shoes">Shoes</label>
               </div>
               <div className="actions-types">
                 <input
@@ -245,7 +245,7 @@ function WomensProducts() {
                   }
                   name="T Shirt"
                 />
-                <label for="T Shirt">T Shirt</label>
+                <label htmlFor="T Shirt">T Shirt</label>
               </div>
               <div className="actions-types">
                 <input
@@ -255,7 +255,7 @@ function WomensProducts() {
                   }
                   name="Upper Tights"
                 />
-                <label for="Upper Tights">Upper Tights</label>
+                <label htmlFor="Upper Tights">Upper Tights</label>
               </div>
               <div className="actions-types">
                 <input
@@ -265,7 +265,7 @@ function WomensProducts() {
                   }
                   name="Undershirt"
                 />
-                <label for="Undershirt">Undershirt</label>
+                <label htmlFor="Undershirt">Undershirt</label>
               </div>
               <div className="actions-types">
                 <input
@@ -275,7 +275,7 @@ function WomensProducts() {
                   }
                   name="Vest"
                 />
-                <label for="Vest">Vest</label>
+                <label htmlFor="Vest">Vest</label>
               </div>
               <div className="actions-types">
                 <input
@@ -285,7 +285,7 @@ function WomensProducts() {
                   }
                   name="Jacket"
                 />
-                <label for="Jacket">Jacket</label>
+                <label htmlFor="Jacket">Jacket</label>
               </div>
             </div>
           </div>

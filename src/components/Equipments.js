@@ -18,7 +18,7 @@ function Equipments() {
       dispatch({ type: "FILTERCAT", payload: "" });
       dispatch({ type: "FILTER", payload: "" });
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="products-flex">
@@ -74,7 +74,7 @@ function Equipments() {
                   }
                   name="Gym"
                 />
-                <label for="Gym">Gym</label>
+                <label htmlFor="Gym">Gym</label>
               </div>
               <div className="actions-types">
                 <input
@@ -84,7 +84,7 @@ function Equipments() {
                   }
                   name="cardio"
                 />
-                <label for="cardio">Cardio</label>
+                <label htmlFor="cardio">Cardio</label>
               </div>
               <div className="actions-types">
                 <input
@@ -94,7 +94,7 @@ function Equipments() {
                   }
                   name="Aerobics"
                 />
-                <label for="Aerobics">Aerobics</label>
+                <label htmlFor="Aerobics">Aerobics</label>
               </div>
               <div className="actions-types">
                 <input
@@ -104,7 +104,7 @@ function Equipments() {
                   }
                   name="Yoga"
                 />
-                <label for="Yoga">Yoga</label>
+                <label htmlFor="Yoga">Yoga</label>
               </div>
               <div className="actions-types">
                 <input
@@ -114,7 +114,7 @@ function Equipments() {
                   }
                   name="Massage"
                 />
-                <label for="Massage">Massage</label>
+                <label htmlFor="Massage">Massage</label>
               </div>
               <div className="actions-types">
                 <input
@@ -124,7 +124,7 @@ function Equipments() {
                   }
                   name="Zumba"
                 />
-                <label for="Zumba">Zumba</label>
+                <label htmlFor="Zumba">Zumba</label>
               </div>
             </div>
           </div>
@@ -216,7 +216,7 @@ function Equipments() {
                   }
                   name="Pants"
                 />
-                <label for="Pants">Pants</label>
+                <label htmlFor="Pants">Pants</label>
               </div>
               <div className="actions-types">
                 <input
@@ -226,7 +226,7 @@ function Equipments() {
                   }
                   name="Shoes"
                 />
-                <label for="Shoes">Shoes</label>
+                <label htmlFor="Shoes">Shoes</label>
               </div>
               <div className="actions-types">
                 <input
@@ -236,7 +236,7 @@ function Equipments() {
                   }
                   name="T Shirt"
                 />
-                <label for="T Shirt">T Shirt</label>
+                <label htmlFor="T Shirt">T Shirt</label>
               </div>
               <div className="actions-types">
                 <input
@@ -246,7 +246,7 @@ function Equipments() {
                   }
                   name="Upper Tights"
                 />
-                <label for="Upper Tights">Upper Tights</label>
+                <label htmlFor="Upper Tights">Upper Tights</label>
               </div>
               <div className="actions-types">
                 <input
@@ -256,7 +256,7 @@ function Equipments() {
                   }
                   name="Undershirt"
                 />
-                <label for="Undershirt">Undershirt</label>
+                <label htmlFor="Undershirt">Undershirt</label>
               </div>
               <div className="actions-types">
                 <input
@@ -266,7 +266,7 @@ function Equipments() {
                   }
                   name="Vest"
                 />
-                <label for="Vest">Vest</label>
+                <label htmlFor="Vest">Vest</label>
               </div>
               <div className="actions-types">
                 <input
@@ -276,7 +276,7 @@ function Equipments() {
                   }
                   name="Jacket"
                 />
-                <label for="Jacket">Jacket</label>
+                <label htmlFor="Jacket">Jacket</label>
               </div>
             </div>
           </div>
