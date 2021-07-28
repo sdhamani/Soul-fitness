@@ -537,6 +537,12 @@
   color: red;
   outline: none;
 }
+.wishlist-page {
+  min-height: 82vh;
+}
+.alert {
+  width: auto;
+}
 .alert-success {
   position: fixed;
   bottom: 0%;
@@ -554,6 +560,7 @@
   color: var(--button-text-color);
   font-size: large;
   background-color: var(--primary-color);
+  z-index: 10;
 }
 
 .alert .fa {
