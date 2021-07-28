@@ -7,6 +7,7 @@ import useLogin from "../context/login-context";
 import { AddToCartAPI } from "../api/cart-api";
 import { ToggleWishlistAPI } from "../api/wishlist-api";
 import { useNavigate } from "react-router-dom";
+import debounce from "lodash.debounce";
 
 export default function Card({ products }) {
   const navigate = useNavigate();
@@ -91,6 +92,9 @@ export default function Card({ products }) {
     }
   };
 
+  const debouncedWishlist = debounce((item) => updateWishlist(item), 1000);
+  const debounceAddedToCart = debounce((item) => addedToCart(item), 1000);
+
   return (
     <div>
       <div className="cards cards-ecom">
@@ -106,7 +110,7 @@ export default function Card({ products }) {
                 <div className="card-overlay-data">
                   <button
                     className="cart-image"
-                    onClick={(e) => addedToCart(item)}
+                    onClick={(e) => debounceAddedToCart(item)}
                   >
                     {cart.length > 0 &&
                     cart.find(
@@ -126,7 +130,7 @@ export default function Card({ products }) {
 
                   <button
                     className="cart-image"
-                    onClick={(e) => updateWishlist(item)}
+                    onClick={(e) => debouncedWishlist(item)}
                   >
                     {cart.length > 0 &&
                     wishlist.find(
