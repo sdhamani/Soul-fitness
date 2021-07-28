@@ -161,26 +161,29 @@ export default function Cart() {
                   <div className="checkout-values">
                     ${cart.reduce(getTotalValue, 0)}
                   </div>
-                  <div className="checkout-values">$10</div>
+                  <div className="checkout-values">$00</div>
                 </div>
               </div>
               <hr></hr>
               <div className="checkout-top">
                 <div>
-                  <div className="checkout-values">Total (tax excl.)</div>
                   <div className="checkout-values">Taxes</div>
+                  <div className="checkout-values">Total (tax excl.)</div>
                 </div>
                 <div>
-                  <div className="checkout-values">
-                    ${cart.reduce(getTotalValue, 0) + 10}
-                  </div>
                   <div className="checkout-values">$0.00</div>
+                  <div className="checkout-values">
+                    ${cart.reduce(getTotalValue, 0)}
+                  </div>
                 </div>
               </div>
               <hr></hr>
               <div className="checkout-btn-div">
-                <button className="seconday-button checkout-btn">
-                  PROCEED TO CHECKOUT
+                <button
+                  disabled={true}
+                  className="seconday-button checkout-btn"
+                >
+                  CHECKOUT COMING SOON
                 </button>
               </div>
             </div>
