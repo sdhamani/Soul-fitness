@@ -146,7 +146,7 @@ export default function Login() {
 
             <input
               type="button"
-              value={"SIGN IN AS GUEST USER"}
+              value={"GUEST USER"}
               className={"btn primary-button signin"}
               onClick={(e) => signInAsGuestUser()}
             ></input>
